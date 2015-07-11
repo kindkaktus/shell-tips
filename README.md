@@ -4,7 +4,7 @@ Tips for living comfortably in Unix shell
 Partially borrowed from [The art of command line](https://github.com/jlevy/the-art-of-command-line)
 - [Processing files and data](#processing-files-and-data)
   - [Redirection](#redirection) 
-- [OpenSSL](#openssl)
+- [Crypto](#crypto)
 - [Git](#git)
 
 
@@ -17,7 +17,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - `ls –lia` – list files with symlinks and hardlinks (hardlinks are files having the same index)
 - `diff /etc/hosts <(ssh somehost cat /etc/hosts)` –compare local /etc/hosts with a remote one
 
-The power of `find`:
+### The power of `find`:
 - `find /usr/lib –iname ‘libstdc*’` - ignore case
 - `find ./dir1 ./dir2 –name "*.cpp"–or –name "*.h" | xargs cat | wc –l` - calculate LOC
 - `find ./ -name "*.h" | xargs egrep -H "^class[ ]*Thread"` - search for declarations of Thread class
@@ -28,53 +28,41 @@ The power of `find`:
 - `find . -name "*.py" -exec grep -qI '\r\n' {} ';' -exec perl -pi -e 's/\r\n/\n/g' {} '+'` -  fix CRLF to LF lineendings in all .py files in the current directory
 - ``perl -i -pe's/\r$//;' `find . | grep Makefile | xargs` `` - replace CRLF with LF in all makefiles in the current dir recursively (use `od –c <filename>` to test for CRLF)
 
+#### The power of grep:
+- `grep –RI KEEP_ALIVES_TIMEOUT /projects` recursively search for files with KEEP_ALIVES_TIME in ‘/projects’  skipping binary files
+Useful grep options: 
+- `-C <num>` – show number of surrounding lines of match
+- `-A <num>` or `–B <num>` – show a number of lines after or before the match
+
 - `locate something` -  find a file anywhere by name, but bear in mind updatedb may not have indexed recently created files
 
-Replace CRLF with LF in all makefiles in the current dir recursively (use od –c <filename> to test for CRLF)
-perl -i -pe's/\r$//;' `find . | grep Makefile | xargs`
-grep –RI KEEP_ALIVES_TIME /projects recursively search for files with KEEP_ALIVES_TIME in ‘/projects’  skipping binary files
-Useful grep options: -C <num> – show number of surrounding lines of match; -A <num> or –B <num> – show a number of lines after or before the match
+- For general searching through source or data files (more advanced than grep -r), use `ag`.
+- To convert HTML to text: `lynx -dump -stdin`
+- For Markdown, HTML, and all kinds of document conversion, try `pandoc`.
+- If you must handle XML, `xmlstarlet` is old but good.
+- For JSON, use `jq`.
+- For Excel or CSV files, `csvkit` provides `in2csv`, `csvcut`, `csvjoin`, `csvgrep`, etc.
+- For Amazon S3, `s3cmd` is convenient and `s4cmd` is faster. Amazon's aws is essential for other AWS-related tasks.
+- f you ever need to write a tab literal in a command line in Bash (e.g. for the -t argument to sort), press `ctrl-v [Tab]` or write `$'\t'` (the latter is better as you can copy/paste it).
+- For binary files, use `hd` for simple hex dumps and `bvi` for binary editing.
+- To split files into pieces, see `split` (to split by size) and `csplit` (to split by a pattern).
+- Use `zless`, `zmore`, `zcat`, and `zgrep` to operate on compressed files.
+- To rename many files at once according to a pattern, use `rename`. For complex renames, `reprenmay` help.
+  - `rename 's/\.bak$//' *.bak` - Recover backup files foo.bak -> foo
+  - `repren --full --preserve-case --from foo --to bar` - full rename of filenames, directories, and contents foo -> bar
 
-•	For general searching through source or data files (more advanced than grep -r), use ag.
-•	To convert HTML to text: lynx -dump -stdin
-•	For Markdown, HTML, and all kinds of document conversion, try pandoc.
-•	If you must handle XML, xmlstarlet is old but good.
-•	For JSON, use jq.
-•	For Excel or CSV files, csvkit provides in2csv, csvcut, csvjoin, csvgrep, etc.
-•	For Amazon S3, s3cmd is convenient and s4cmd is faster. Amazon's aws is essential for other AWS-related tasks.
-•	f you ever need to write a tab literal in a command line in Bash (e.g. for the -t argument to sort), press ctrl-v [Tab] or write $'\t' (the latter is better as you can copy/paste it).
-•	For binary files, use hd for simple hex dumps and bvi for binary editing.
-•	To split files into pieces, see split (to split by size) and csplit (to split by a pattern).
-•	Use zless, zmore, zcat, and zgrep to operate on compressed files.
-•	To rename many files at once according to a pattern, use rename. For complex renames, reprenmay help.
-      # Recover backup files foo.bak -> foo:
-      rename 's/\.bak$//' *.bak
-      # Full rename of filenames, directories, and contents foo -> bar:
-      repren --full --preserve-case --from foo --to bar .
+- `cut` select portions of each line of a file (IMHO simpler and user-friendlier alternative to `awk`)
+  - `cut -d : -f 1,7 /etc/passwd` - extract login names and shells from the passwd(5)
+- `which`, `whereis`, `type` – locate the binary, source and manual page for a command
+- `file` – determine file type
 
-
-cut select portions of each line of a file (IMHO simpler and user-friendlier alternative to awk)
-cut -d : -f 1,7 /etc/passwd - extract login names and shells from the passwd(5)
-chmod – set file/dir permissions (e.g. chmod a+x ./myscript.sh – make file executable; chmod 777 
-which, whereis, type – locate the binary, source and manual page for a command
-type –p openssl
-which python
-slocate – locate a file (e.g. libraries)
-file – determine file type
-md5sum– calculate MD5 digest of the file 
-echo -n “text_to_hash”| md5sum
-uuencode/uudecode – encode/decode (a part of shared utilites)
-echo –n “test_to_encode” | uuencode –m /dev/stdout   - performs base64 encoding
-htpasswd [–c] passwd_file username  - generate Apache password for username and store it to passwd_file. –c option is used to create a new passwd-file instead of adding lines to an existing one.
-tar – archiving/extracting tar
-tar –xvf somearchive.tar [-C out_dir] – extract from somearchive.tar with verbose output [to out_dir, which should already exist]
-tar –xjf simearchive.tar.bz2 – for bz2-compressed tars
-tar –xzf simearchive.tar.gz – for gzip-compressed tars
-tar cvzf log.tgz /var/log – create a compressed archive log.tgz from the directory /var/log
-wc – calculate the number of bytes, newlines, words in a file
-od – octal, hex, decimal, ascii dump
-od –t x1 file – print hex chars of file
-stat – view file statistics
+- `tar –xvf somearchive.tar [-C out_dir]` – extract from somearchive.tar with verbose output [to out_dir, which should already exist]
+- `tar –xjf simearchive.tar.bz2` – for bz2-compressed tars
+- `tar –xzf simearchive.tar.gz` – for gzip-compressed tars
+- `tar cvzf log.tgz /var/log` – create a compressed archive log.tgz from the directory /var/log
+- `wc` – calculate the number of bytes, newlines, words in a file
+- `od –t x1 file` – print hex chars of file
+- `stat` – view file statistics
 
 ### Redirection
 - `gcc main.c >file` – stdout to file
@@ -88,7 +76,7 @@ stat – view file statistics
 
 
 
-## OpenSSL
+## Crypto
 
 - `openssl x509 -noout -text -in cert.pem` – view cert info
 - `openssl x509 -purpose -in cert.pem –noout` – view effective cert purposes
@@ -99,6 +87,9 @@ stat – view file statistics
 - `openssl pkcs12 –nodes -in file.pfx -out file.pem` – extract all from PKCS#12 package
 - `echo –n "some text" | openssl base64 –e` - base64 encode
 - `echo "ABCDEF==" | openssl base64 –d` – base64-decode
+- `echo -n "text" | md5sum` - calculate MD5 digest of the file 
+- `echo –n "text" | uuencode –m /dev/stdout`  - base64-encode
+- `htpasswd [–c] passwd_file username` - generate Apache password for username and store it to passwd_file. `–c` option is used to create a new passwd-file instead of adding lines to an existing one.
 
 
 ## Git
