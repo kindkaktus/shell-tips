@@ -15,36 +15,23 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - `rm -rf ./* ./.*[!.]* ./...*` - recursively remove all files in the current dir including hidden
 - `ln [–s] target [linkname]` – make [symbolic] links between files/dirs
 - `ls –lia` – list files with symlinks and hardlinks (hardlinks are files having the same index)
+- `diff /etc/hosts <(ssh somehost cat /etc/hosts)` –compare local /etc/hosts with a remote one
 
-### Redirection
-- `gcc main.c >file` – stdout to file
-- `gcc main.c 2>file` – stderr to file
-- `gcc main.c 1>&2` - stdout to stderr
-- `gcc main.c 2>&1` -  stderr to stdout
-- `gcc main.c >& file`  - stdout and stderr to file (bash)
-- `gcc main.c >file 2>&1` - stdout and stderr to file (ksh and bash)
-- `gcc main.c 2>&1 >file` – stderr to file, stdout to file (note the difference with the above)
+The power of `find`:
+- `find /usr/lib –iname ‘libstdc*’` - ignore case
+- `find ./dir1 ./dir2 –name "*.cpp"–or –name "*.h" | xargs cat | wc –l` - calculate LOC
+- `find ./ -name "*.h" | xargs egrep -H "^class[ ]*Thread"` - search for declarations of Thread class
+- `find ./ -type d -path "*.svn" -prune | xargs rm -rf` - clean up .svn dirs:
+- `find ./ -name configure | xargs svn propset svn:executable yes` - set svn:executable flag on all configure scripts
+- `find ./ -name configure | xargs svn propdel svn:executable`- remove svn:executable flag from all configure scripts
+- `find /usr/local/lib/ -iname libicu*.so* -exec du -ks {} \; | cut -f1 | awk '{total=total+$1}END{print total/1024 " KB"}'` – find an aggregate size of all filed by mask
+- `find . -name "*.py" -exec grep -qI '\r\n' {} ';' -exec perl -pi -e 's/\r\n/\n/g' {} '+'` -  fix CRLF to LF lineendings in all .py files in the current directory
+- ``perl -i -pe's/\r$//;' `find . | grep Makefile | xargs` `` - replace CRLF with LF in all makefiles in the current dir recursively (use `od –c <filename>` to test for CRLF)
 
-diff /etc/hosts <(ssh somehost cat /etc/hosts) –compare local /etc/hosts with a remote one
+- `locate something` -  find a file anywhere by name, but bear in mind updatedb may not have indexed recently created files
 
-find /usr/lib –iname ‘libstdc*’
-Calculate LOC in UPnPFileStreamer and UPnPAVPlayer: 
-find ./UPnPFileStreamer ./UPnPAVPlayer –name “*.cpp” –or –name “*.h” | xargs cat | wc –l
-Search for Thread class declarations: 
-find ./ -name "*.h" | xargs egrep -H "^class[ ]*Thread"
-Clean up .svn dirs:
-find ./ -type d -path "*.svn" -prune | xargs rm -rf 
-Set svn:executable flag on all configure scripts:
-find ./ -name configure | xargs svn propset svn:executable ‘’ 
-Delete svn:executable flag from all configure scripts:
-find ./ -name configure | xargs svn propdel svn:executable 
 Replace CRLF with LF in all makefiles in the current dir recursively (use od –c <filename> to test for CRLF)
 perl -i -pe's/\r$//;' `find . | grep Makefile | xargs`
-find /usr/local/lib/ -iname libicu*.so* -exec du -ks {} \; | cut -f1 | awk '{total=total+$1}END{print total/1024 " KB"}' – find an aggregate size of all filed by mask
-find . -name "*.py" -exec grep -qI '\r\n' {} ';' -exec perl -pi -e 's/\r\n/\n/g' {} '+'   fix CRLF to LF lineendings in all .py files in the current directory
-
-locate something -  find a file anywhere by name, but bear in mind updatedb may not have indexed recently created files
-
 grep –RI KEEP_ALIVES_TIME /projects recursively search for files with KEEP_ALIVES_TIME in ‘/projects’  skipping binary files
 Useful grep options: -C <num> – show number of surrounding lines of match; -A <num> or –B <num> – show a number of lines after or before the match
 
@@ -88,6 +75,17 @@ wc – calculate the number of bytes, newlines, words in a file
 od – octal, hex, decimal, ascii dump
 od –t x1 file – print hex chars of file
 stat – view file statistics
+
+### Redirection
+- `gcc main.c >file` – stdout to file
+- `gcc main.c 2>file` – stderr to file
+- `gcc main.c 1>&2` - stdout to stderr
+- `gcc main.c 2>&1` -  stderr to stdout
+- `gcc main.c >& file`  - stdout and stderr to file (bash)
+- `gcc main.c >file 2>&1` - stdout and stderr to file (ksh and bash)
+- `gcc main.c 2>&1 >file` – stderr to file, stdout to file (note the difference with the above)
+
+
 
 
 ## OpenSSL
