@@ -4,6 +4,7 @@ Tips for living comfortably in Unix shell
 Partially borrowed from [The art of command line](https://github.com/jlevy/the-art-of-command-line)
 - [Processing files and data](#processing-files-and-data)
 - [System administration](#system-administration)
+- Working with disk(#working with disk)
 - [Bash](#bash)
 - [Crypto](#crypto)
 - [Git](#git)
@@ -49,7 +50,6 @@ Useful grep options:
 - To rename many files at once according to a pattern, use `rename`. For complex renames, `reprenmay` help.
   - `rename 's/\.bak$//' *.bak` - Recover backup files foo.bak -> foo
   - `repren --full --preserve-case --from foo --to bar` - full rename of filenames, directories, and contents foo -> bar
-
 - `cut` select portions of each line of a file (IMHO simpler and user-friendlier alternative to `awk`)
   - `cut -d : -f 1,7 /etc/passwd` - extract login names and shells from the passwd(5)
 - `which`, `whereis`, `type` – locate the binary, source and manual page for a command
@@ -89,7 +89,6 @@ Useful grep options:
 - `lsmod` – list of loaded modules
 - `ldd <binary>` – print shared library dependencies
 - `ldconfig, ld.so` – configure the location of dynamic libs
-
 - `whoami` - your login name
 - `who` - list the users logged into the machine. 
 - `w` – show who is logged and what they are doing
@@ -101,6 +100,22 @@ Useful grep options:
 - `adduser <username> sudo` – add existing user to sudo group. The change will take effect the next time the user logs in
 - `for s in /etc/rc$(runlevel  | awk '{ print $2}').d/*; do  basename $s | grep '^S' | sed 's/S[0-9].//g' ;done | sort` – list services started on boot on Debian. As an alternative install `sysv-rc-conf` package. On CentOS use `chkconfig`
 - For a more in-depth system overview, use `glances`. It presents you with several system level statistics in one terminal window. Very helpful for quickly checking on various subsystems.
+
+## Working with disk
+- `dstat` = `vmstat` + `iostat` + `ifstat`
+  - `iostat` – brief system disk statistics
+- `du –hs /www` - output the total size of /www folder in a human-readable format
+- `df -h` - file system space usage
+For looking at why a disk is full, `ncdu` saves time over the usual commands like `du -sh *`
+- `disklabel` (BSD) – manipulate disk label
+- `fdisk sd0` or `disklabel sd0` – retrieve disk info including disk geometry. Typical location of USB Flash on OpenBSD is `/dev/sd0i`
+- `hdparm -ftT /dev/hda` – retrieve disk speed information
+- `mke2fs -j /dev/<drive-device>` - format with ext3
+- `mkswap /dev/<drive-device>` - format as swap
+- `newfs` (BSD) – format partitions
+- `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
+In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
+
 
 ## Bash 
 - `!< num>` - execite the command number num from the history list
