@@ -5,7 +5,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - [Processing files and data](#processing-files-and-data)
 - [System administration](#system-administration)
 - [Working with disk] (#working-with-disk)
-- [Manage processes] (#manage processes)
+- [Manage processes] (#manage-processes)
 - [Bash](#bash)
 - [Crypto](#crypto)
 - [Git](#git)
