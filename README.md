@@ -20,7 +20,7 @@ Add repository as git subtree
 git remote add pretty-python-remote https://github.com/kindkaktus/PrettyPython
 git fetch pretty-python-remote
 git read-tree --prefix=Software/Import/PrettyPython -u pretty-python-remote/master
-git commit -a -m"Added PrettyPython library as subtree from https://github.com/kindkaktus/PrettyPython"
+git commit -a -m"Added PrettyPython library as a subtree from https://github.com/kindkaktus/PrettyPython"
 git push
 ```
 ... and later on, incorporate new changes made to the 3rd party library into our repo
