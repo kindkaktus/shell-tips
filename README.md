@@ -5,6 +5,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - [Processing files and data](#processing-files-and-data)
 - [System administration](#system-administration)
 - [Working with disk] (#working-with-disk)
+- [Manage processes] (#manage processes)
 - [Bash](#bash)
 - [Crypto](#crypto)
 - [Git](#git)
@@ -115,6 +116,44 @@ For looking at why a disk is full, `ncdu` saves time over the usual commands lik
 - `newfs` (BSD) – format partitions
 - `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
+
+## Manage processes
+- `dstat` = `vmstat` + `iostat` + `ifstat`
+- `htop` - similar to `top`, but is better (i.e. shows correct CPU timings for multithreaded programs which uses NPL threads; also more user-friendly etc)
+- `ps aux` – obtain process list
+  - `ps auxw` – with wide output (matters when the line does not fit the window width)
+  - `ps auxf` – with tree
+- `ps –eLf` – info about threads
+  - `ps -eLo pid,ppid,lwp,%cpu,%mem,vsize,rssize` – info per thread with CPU/memory usage
+- `ps –o pid,cmd –ppid <ppid>`  - get processes having parent <ppid>
+- `pstree –p` – display process tree
+- `cat /proc/self` – info about self
+- `command &`  run command in the background. 
+- `fg` - bring a background or stopped process to the foreground. 
+- `bg` - send the process to the background. The same can be accomplished with Ctrl-z. 
+- `kill <pid>` - try to kill the process with SIGTERM.
+- `kill -9 <pid>` - kill the process with SIGKILL, unlike SIGTREM the SIGKILL cannot be caught by a process.
+- `killall <name>` - kill all processes with the specified name.
+- `kill –s 0 <pid>` - check the existence of a process with <pid>. Cannot be sent to system processes (such as 1 [init]). In this case simpy use `ps –p <pid> -o pid=`
+- `sudo kill –HUP 1`  - tell `‘init’` that it should re-read `/etc/inittab`
+- `pkill –f mask` – kill all processes mathing pattern
+- `pidof` – get pid of the running program
+- `fuser` – identify processes using files and sockets
+- `nice <program> <level>`  - run program with niceness level. Specifying a high nice level will make the program run with a lower priority.
+- `/proc/mounts` == `/etc/mtab` – mounts
+- `nohup <command>` - runs the given command with hangup signals ignored, so that the command can continue running in the background after you log out.
+- E.g. you remotely login to the server, then give
+```%ssh <some_server> -l <username>
+%nohup <some_long_executing_program> &
+%logout```
+- `watch`  - execute a program periodically, showing output fuulscreen (i.e. like top). For example: `watch tail –n 25 /tmp/myprog.log` will periodically print last 25 lines of `/tmp/myprog.log`
+- `gdb <program> <pid>` – attach to process pid associating with program executable
+- `gdb <program> <core>` – debug core file core associating with program executable
+- `time <command>` – executes command and displays its resource usage after it finishes
+- `strace` – trace system calls and signals E.g. strace ./myprog will execute program and intercept all its system calls abd signals.
+- `ltrace` – library call tracer (like strace for system calls)
+- `gcov` – code coverage tool
+- `gprof` – profiling tool
 
 
 ## Bash 
