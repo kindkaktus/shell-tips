@@ -3,7 +3,8 @@ Tips for living comfortably in Unix shell
 
 Partially borrowed from [The art of command line](https://github.com/jlevy/the-art-of-command-line)
 - [Processing files and data](#processing-files-and-data)
-  - [Redirection](#redirection) 
+- [System administration](#system-administration)
+- [Bash](#bash)
 - [Crypto](#crypto)
 - [Git](#git)
 
@@ -70,8 +71,40 @@ Useful grep options:
 - `gcc main.c >file 2>&1` - stdout and stderr to file (ksh and bash)
 - `gcc main.c 2>&1 >file` – stderr to file, stdout to file (note the difference with the above)
 
+## System administration
+- `ipcs -m`  - information about shared memory
+- `ipcs -s`  - information about existing semaphore sets.
+- `sysctl –a`   - kernel configuration info
+- `env` – environment variables,
+- `uname –a` – print system info (kernel, hostname, OS etc)
+- `$ cat /etc/*-release` – information about Linux distribution
+- `cat /proc/version or dmesg | head -1`  – pretty much the same but with Linux distribution
+- `cat /proc/cpuinfo`  - CPU info
+- `cat /proc/meminfo` – memory info
+- `cat /proc/loadavg` – system load
+- `vmstat` – virtual memory, CPU etc
+- `free` - memory usage information. 
+- `hostname` Print the name of the local machine (host). 
+- `stat` – info about file system (files, dirs)
+- `lsmod` – list of loaded modules
+- `ldd <binary>` – print shared library dependencies
+- `ldconfig, ld.so` – configure the location of dynamic libs
 
+- `whoami` - your login name
+- `who` - list the users logged into the machine. 
+- `w` – show who is logged and what they are doing
+- `last` – show listing of last logged users (is taken from /var/log/wtmp)
+- `rwho -a` - list all users logged into the network. 
+- `uptime`  - the amount of time since the last reboot. 
+- `passwd` – change password
+- `adduser <username>` - add new user (preferred to useradd)
+- `adduser <username> sudo` – add existing user to sudo group. The change will take effect the next time the user logs in
+- `for s in /etc/rc$(runlevel  | awk '{ print $2}').d/*; do  basename $s | grep '^S' | sed 's/S[0-9].//g' ;done | sort` – list services started on boot on Debian. As an alternative install `sysv-rc-conf` package. On CentOS use `chkconfig`
+- For a more in-depth system overview, use `glances`. It presents you with several system level statistics in one terminal window. Very helpful for quickly checking on various subsystems.
 
+## Bash 
+- `!< num>` - execite the command number num from the history list
+- `Ctrl+R` – search history in reverse order, press Ctrl+R to search further
 
 ## Crypto
 
