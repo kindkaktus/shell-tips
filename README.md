@@ -17,7 +17,6 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - `ls –lia` – list files with symlinks and hardlinks (hardlinks are files having the same index)
 - `diff /etc/hosts <(ssh somehost cat /etc/hosts)` –compare local /etc/hosts with a remote one
 
-### The power of `find`:
 - `find /usr/lib –iname ‘libstdc*’` - ignore case
 - `find ./dir1 ./dir2 –name "*.cpp"–or –name "*.h" | xargs cat | wc –l` - calculate LOC
 - `find ./ -name "*.h" | xargs egrep -H "^class[ ]*Thread"` - search for declarations of Thread class
@@ -28,7 +27,6 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - `find . -name "*.py" -exec grep -qI '\r\n' {} ';' -exec perl -pi -e 's/\r\n/\n/g' {} '+'` -  fix CRLF to LF lineendings in all .py files in the current directory
 - ``perl -i -pe's/\r$//;' `find . | grep Makefile | xargs` `` - replace CRLF with LF in all makefiles in the current dir recursively (use `od –c <filename>` to test for CRLF)
 
-#### The power of grep:
 - `grep –RI KEEP_ALIVES_TIMEOUT /projects` recursively search for files with KEEP_ALIVES_TIME in ‘/projects’  skipping binary files
 Useful grep options: 
 - `-C <num>` – show number of surrounding lines of match
@@ -55,8 +53,7 @@ Useful grep options:
   - `cut -d : -f 1,7 /etc/passwd` - extract login names and shells from the passwd(5)
 - `which`, `whereis`, `type` – locate the binary, source and manual page for a command
 - `file` – determine file type
-
-- `tar –xvf somearchive.tar [-C out_dir]` – extract from somearchive.tar with verbose output [to out_dir, which should already exist]
+- `tar –xvf somearchive.tar [-C out_dir]` – extract from somearchive.tar with verbose output [to `out_dir`, which should already exist]
 - `tar –xjf simearchive.tar.bz2` – for bz2-compressed tars
 - `tar –xzf simearchive.tar.gz` – for gzip-compressed tars
 - `tar cvzf log.tgz /var/log` – create a compressed archive log.tgz from the directory /var/log
