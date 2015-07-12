@@ -324,11 +324,13 @@ List subtrees merged to your project:
 `git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq`
 
 
-### Misc
+### Misc git gotchas
 
 Diff commited file to the previous commit:
 
 `git diff HEAD@{1} filename`
+
+
 
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
@@ -338,4 +340,47 @@ Diff commited file to the previous commit:
 - `screen `- screen window manager that multiplexes a physical terminal between several processes. Useful e.g. when having multiple screens per one ssh connection
 - `grabserial` - reads a serial port and writes the data to standard output. Useful e.g. to measure system boot time (`-t` option)
 - `echo $?` – exit code of the last executed program
+
+### Granting permissions to /var/www
+Taken from [here](http://superuser.com/questions/19318/how-can-i-give-write-access-of-a-folder-to-all-users-in-linux)
+ 
+To best share with multiple users who should be able to write in `/var/www`, it should be assigned a common group. For example the default group for web content on Ubuntu and Debian is `www-data`. Make sure all the users who need write access to `/var/www` are in this group.
+
+`sudo usermod -a -G www-data <some_user>`
+
+Then set the correct permissions on `/var/www`:
+
+`sudo chgrp -R www-data /var/www`
+`sudo chmod -R g+w /var/www`
+
+Additionally, you should make the directory and all directories below it `"set GID"`, so that all new files and directories created under `/var/www` are owned by the `www-data` group.
+
+`sudo find /var/www -type d -exec chmod 2775 {} \; `
+
+Find all files in `/var/www` and add read and write permission for owner and group:
+
+``sudo find `/var/www -type f -exec chmod ug+rw {} \;` ``
+
+You might have to log out and log back in to be able to make changes if you're editing permission for your own account.
+
+ 
+
+### Restrict access for ftpuser to `/var/www` only using `vsftpd`
+
+`usermod --home /var/www/ ftpuser`
+
+then set required permission for ftpuser on `/var/www/` if needed (see the above section about apache)
+ 
+Edit `/etc/vsftpd/vsftpd.conf`:
+
+`chroot_local_user=YES`
+
+ and restart `vsftpd`
+ 
+### Analyse Apache access log for the most frequent source IP addresses
+`tail -10000 access_log | awk '{print $1}' | sort | uniq -c | sort -n | tail`
+ 
+### Analyse Apache access log for the most frequent source user agent
+`tail -10000 access_log | awk '{print $12}' | sort | uniq -c | sort -n | tail`
+ 
 
