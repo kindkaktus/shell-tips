@@ -16,7 +16,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 
 ## Processing files and data
 
-- `cd ~-` -  change to $(OLDPWD).
+- `cd -` -  cd to `$(OLDPWD)`
 - `rm -rf ./* ./.*[!.]* ./...*` - recursively remove all files in the current dir including hidden
 - `ln [–s] target [linkname]` – make [symbolic] links between files/dirs
 - `ls –lia` – list files with symlinks and hardlinks (hardlinks are files having the same index)
@@ -199,6 +199,99 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `!< num>` - execite the command number num from the history list
 - `Ctrl+R` – search history in reverse order, press Ctrl+R to search further
 - `shopt –s dotglob` – enable visibility of hidden files in bash shell
+
+### Checking files:
+- `-r file` - Check if file is readable.
+- `-w file` - Check if file is writable.
+- `-x file` - Check if we have execute access to file.
+- `-f file` - Check if file is an ordinary file (as opposed to a directory, a device special file, etc.)
+- `-s file` - Check if file has size greater than 0.
+- `-d file` - Check if file is a directory.
+- `-e file` - Check if file exists. Is true even if file is a directory
+- ```if [ -f file ] ; then
+   echo $file exists 
+fi```
+
+### Checking strings:
+- `[ "$s1" = "$s2" ]` - Check if s1 equals s2.
+- `[ "$s1" != "$s2" ]` - Check if s1 is not equal to s2.
+- `[ -z "$s1" ]` - Check if s1 has size 0.
+- `[ -n "$s1" ]` - Check if s1 has nonzero size.
+- `[ "$s1" ]` - Check if s1 is not the empty string.
+- `[[ "$s1" < "$s2" ]] or [ "$s1" \< "$s2" ]` - Check if s1 is less than s2 in alphabetical order
+
+### Checking numbers:
+- `[ "$n1" -eq "$n2" ]` -  Check to see if n1 equals n2
+- `[ "$n1" -ne "$n2" ]` -  Check to see if n1 is not equal to n2.
+- `[ "$n1" -lt "$n2" ]` or `((n1 < n2))` - Check to see if n1 < n2.
+- `[ "$n1" -le "$n2" ]` or `((n1 <= n2))` - Check to see if n1 <= n2.
+- `[ "$n1" -gt "$n2" ]` or `((n1 > n2))` - Check to see if n1 > n2.
+- `[ "$n1" -ge "$n2" ]` or `((n1 >= n2))` -  Check to see if n1 >= n2.
+- Arithmetic expansion: `i=$(( (i + 1) % 5 ))`
+- Boolean operators:
+-`!`  - not
+- `-a` - and
+- `-o`  - or
+
+### Quoting in BASH:
+ \c             Take character c literally.
+`cmd`          Run cmd and replace it in the line of code with its output.
+"whatever"     Take whatever literally, after first interpreting $, `...`, \
+'whatever'     Take whatever absolutely literally.
+  match=`ls *.bak`  Puts names of .bak files into shell variable match.
+  echo \*                 Echos * to screen, not all filename as in:  echo *
+  echo '$1$2hello'     Writes literally $1$2hello on screen.
+  echo "$1$2hello"    Writes value of parameters 1 and 2 and string hello.
+Grouping in BASH:
+Parentheses may be used for grouping, but must be preceded by backslashes since parentheses normally have a different meaning to the shell (namely to run a command or commands in a subshell)
+if test \( -r $file1 -a -r $file2 \) -o \( -r $1 -a -r $2 \)  then … fi
+Parameter substitution in BASH:
+${parameter-default} If parameter not declared, use default
+${parameter:-default} If parameter not declared or is null, use default
+variable=
+# variable has been declared, but is set to null.
+ 
+echo "${variable-0}"    # (no output)
+echo "${variable:-1}"   # 1
+ 
+unset variable
+ 
+echo "${variable-2}"    # 2
+echo "${variable:-3}"   # 3
+ 
+Checking a variable exists: ${name:?error message}.
+For example, if a Bash script requires a single argument,
+writeinput_file=${1:?usage: $0 input_file}
+ 
+${var#Pattern}  Remove from $var  the shortest part of $Pattern that matches the front of $var.
+${var##Pattern} Remove from $var the longest part of $Pattern that matches the front of $var.
+${var%Pattern}  Remove from $var  the shortest part of $Pattern that matches the back of $var.
+${var%%Pattern} Remove from $var the longest part of $Pattern that matches the back of $var.
+${var/Pattern/Replacement}  First match of Pattern, within var replaced with Replacement.  If Replacement is omitted, then the first match of Pattern is replaced by nothing, that is, deleted.
+${var//Pattern/Replacement} All matches of Pattern, within var replaced with Replacement.  If Replacement is omitted, then all occurrences of Pattern are replaced by nothing, that is, deleted.
+${var/#Pattern/Replacement} If prefix of var matches Pattern, then substitute Replacement for Pattern.
+${var/%Pattern/Replacement} If suffix of var matches Pattern, then substitute Replacement for
+${0%/*.*} – retrieves script directory name (same as $(dirname $0), but much faster)
+${0##/*/} – retrieves script base name (same as $(basename $0), but much faster)
+Loops
+for file in "file1 file2 /var/log/*.log"
+do
+    cp $file /tmp
+done
+Tricky: if there are at least one file matching /var/log/*.log, the loop behaves as expected and will copy file1, file2 and all these log files to /tmp. However if there are no files matching ther pattern, the pattrern itself will be substituted for cp which will produce error: cp: /var/log/*.log: No such file or directory
+Other:
+source data-file
+. data-file – same as #include directive in a C program; the dot-syntax is more portable
+ctrl-r - search through command history
+ctrl-w to delete the last word
+ctrl-u to delete the whole line.
+alt-b and alt-f to move by word
+ctrl-k to kill to the end of the line
+ 
+subshells:
+# do something in current dir
+(cd /some/other/dir; other-command)
+# continue in original dir
 
 ## Crypto
 
