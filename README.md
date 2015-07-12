@@ -6,8 +6,10 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - [System administration](#system-administration)
 - [Working with disk] (#working-with-disk)
 - [Manage processes] (#manage-processes)
+- [Network](#network)
 - [Bash](#bash)
 - [Crypto](#crypto)
+- [Miscellaneous](#miscellaneous)
 - [Git](#git)
 
 
@@ -155,6 +157,33 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `gcov` – code coverage tool
 - `gprof` – profiling tool
 
+## Network
+- For web debugging, `curl` especiallt `curl -I`, `wget`, and the more modern `httpie`
+- `dstat` = `vmstat` + `iostat` + `ifstat`
+- `netstat –anp` - all
+- `netstat --inet -anp` - TCP и UDP
+- `netstat –tanp` - TCP only
+- `netstat –a –p tcp | grep LISTEN` – list of listening TCp ports (works in OpenBSD)
+- `nmap` – network exploration tool and security scanner (e.g. ports scanner)
+- `xprobe (xprobe2)` – OS fingerprint scanner (guesses OS version)
+- `finger` – look up users of (remote) OS
+- `rpcinfo` – reports rpc information of the (remote) host
+- `netcat` - network utility for reading from and writing to network connections on either TCP or UDP
+- `netcat $ip $port </dev/zero` – send stream of zeroes to the server (might be useful for testing)
+- `lsof -i TCP:1234 open` – who is listeinng port 1234.
+- `fuser` – identify processes using files and sockets
+- `host [pcname]` – DNS lookup (of pcname).
+- `nslookup` – query Internet domain name servers (DNS). Most implementations of nslookup do not look at `/etc/hosts`, they only query domain name servers.
+- `tcpdump` – console sniffer
+  - `tcpdump tcp port 80`
+  - `tcpdump -X -i lo0 tcp port 1235` – sniff on lo0:1235 and print packets payload
+- `whois` – submit whois query
+- `tcpkill` -  kill connections to or from a particular host, network, port, or combination of all.
+- Use `mtr` as a better traceroute, to identify network issues
+  - To find which socket or process is using bandwidth, try `iftop` or `nethogs`.
+  - The `ab` tool (comes with Apache) is helpful for quick-and-dirty checking of web server performance. For more complex load testing, try `siege`.
+  - For more serious network debugging, `wireshark`, `tshark`, or `ngrep`.
+
 
 ## Bash 
 - `!< num>` - execite the command number num from the history list
@@ -175,6 +204,9 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `echo –n "text" | uuencode –m /dev/stdout`  - base64-encode
 - `htpasswd [–c] passwd_file username` - generate Apache password for username and store it to passwd_file. `–c` option is used to create a new passwd-file instead of adding lines to an existing one.
 
+## Miscellaneous
+- `ntpd –s` – set time immidiately (OpenBSD)
+- `ntpd –q` – set time and exit (Linux)
 
 ## Git
 
