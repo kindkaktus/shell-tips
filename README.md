@@ -30,7 +30,11 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - `find ./ -name configure | xargs svn propdel svn:executable`- remove svn:executable flag from all configure scripts
 - `find /usr/local/lib/ -iname libicu*.so* -exec du -ks {} \; | cut -f1 | awk '{total=total+$1}END{print total/1024 " KB"}'` – find an aggregate size of all filed by mask
 - `find . -name "*.py" -exec grep -qI '\r\n' {} ';' -exec perl -pi -e 's/\r\n/\n/g' {} '+'` -  fix CRLF to LF lineendings in all .py files in the current directory
-- ``perl -i -pe's/\r$//;' `find . | grep Makefile | xargs` `` - replace CRLF with LF in all makefiles in the current dir recursively (use `od –c <filename>` to test for CRLF)
+
+- `od –t x1 file` – print hex chars of file
+- `head -1 myfile | od` – check newline type used
+- `perl -i -pe's/\r$//;' myfile` – replace CRLF -> LF for myfile
+- ``perl -i -pe's/\r$//;' `find . | grep Makefile | xargs` `` - replace CRLF -> LF for makefiles in the current dir recursively (use `od –c <filename>` to test for CRLF)
 
 - `grep –RI KEEP_ALIVES_TIMEOUT /projects` recursively search for files with KEEP_ALIVES_TIME in ‘/projects’  skipping binary files
 Useful grep options: 
@@ -38,6 +42,9 @@ Useful grep options:
 - `-A <num>` or `–B <num>` – show a number of lines after or before the match
 
 - `locate something` -  find a file anywhere by name, but bear in mind updatedb may not have indexed recently created files
+- `which`, `whereis`, `type` – locate the binary, source and manual page for a command
+- `file` – determine file type
+- `unison` – file synchronization tool (uses e.g. rsync)
 
 - For general searching through source or data files (more advanced than grep -r), use `ag`.
 - To convert HTML to text: `lynx -dump -stdin`
@@ -55,14 +62,12 @@ Useful grep options:
   - `repren --full --preserve-case --from foo --to bar` - full rename of filenames, directories, and contents foo -> bar
 - `cut` select portions of each line of a file (IMHO simpler and user-friendlier alternative to `awk`)
   - `cut -d : -f 1,7 /etc/passwd` - extract login names and shells from the passwd(5)
-- `which`, `whereis`, `type` – locate the binary, source and manual page for a command
-- `file` – determine file type
+
 - `tar –xvf somearchive.tar [-C out_dir]` – extract from somearchive.tar with verbose output [to `out_dir`, which should already exist]
 - `tar –xjf simearchive.tar.bz2` – for bz2-compressed tars
 - `tar –xzf simearchive.tar.gz` – for gzip-compressed tars
 - `tar cvzf log.tgz /var/log` – create a compressed archive log.tgz from the directory /var/log
 - `wc` – calculate the number of bytes, newlines, words in a file
-- `od –t x1 file` – print hex chars of file
 - `stat` – view file statistics
 
 ### Redirection
@@ -92,12 +97,16 @@ Useful grep options:
 - `lsmod` – list of loaded modules
 - `ldd <binary>` – print shared library dependencies
 - `ldconfig, ld.so` – configure the location of dynamic libs
+- `nm`, `objdump`, `ldd`, `readelf` - inspecting binaries (export/import symbols, dependant libraries etc)
+- `export LD_DEBUG=symbols; ./myapp` – run myapp displaying shared libs symbols resolution progress
+- `id`  - show current user access rights
 - `whoami` - your login name
 - `who` - list the users logged into the machine. 
 - `w` – show who is logged and what they are doing
 - `last` – show listing of last logged users (is taken from /var/log/wtmp)
 - `rwho -a` - list all users logged into the network. 
-- `uptime`  - the amount of time since the last reboot. 
+- `uptime`  - the amount of time since the last reboot
+- `write user [tty]` – send text message to a logged user on the same machine
 - `passwd` – change password
 - `adduser <username>` - add new user (preferred to useradd)
 - `adduser <username> sudo` – add existing user to sudo group. The change will take effect the next time the user logs in
@@ -183,11 +192,13 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
   - To find which socket or process is using bandwidth, try `iftop` or `nethogs`.
   - The `ab` tool (comes with Apache) is helpful for quick-and-dirty checking of web server performance. For more complex load testing, try `siege`.
   - For more serious network debugging, `wireshark`, `tshark`, or `ngrep`.
+  - `minicom` – serial port console client
 
 
 ## Bash 
 - `!< num>` - execite the command number num from the history list
 - `Ctrl+R` – search history in reverse order, press Ctrl+R to search further
+- `shopt –s dotglob` – enable visibility of hidden files in bash shell
 
 ## Crypto
 
@@ -205,8 +216,13 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `htpasswd [–c] passwd_file username` - generate Apache password for username and store it to passwd_file. `–c` option is used to create a new passwd-file instead of adding lines to an existing one.
 
 ## Miscellaneous
+- `date MMDDhhmmYYYY`  - set date
 - `ntpd –s` – set time immidiately (OpenBSD)
 - `ntpd –q` – set time and exit (Linux)
+- `uuidgen` – generated uuid
+- `screen `- screen window manager that multiplexes a physical terminal between several processes. Useful e.g. when having multiple screens per one ssh connection
+- `grabserial` - reads a serial port and writes the data to standard output. Useful e.g. to measure system boot time (`-t` option)
+- `echo $?` – exit code of the last executed program
 
 ## Git
 
