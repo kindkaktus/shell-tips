@@ -9,8 +9,8 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - [Network](#network)
 - [Bash](#bash)
 - [Crypto](#crypto)
-- [Miscellaneous](#miscellaneous)
 - [Git](#git)
+- [Miscellaneous](#miscellaneous)
 
 
 
@@ -300,14 +300,6 @@ Tricky: if there are at least one file matching `/var/log/*.log`, the loop behav
 - `echo –n "text" | uuencode –m /dev/stdout`  - base64-encode
 - `htpasswd [–c] passwd_file username` - generate Apache password for username and store it to passwd_file. `–c` option is used to create a new passwd-file instead of adding lines to an existing one.
 
-## Miscellaneous
-- `date MMDDhhmmYYYY`  - set date
-- `ntpd –s` – set time immidiately (OpenBSD)
-- `ntpd –q` – set time and exit (Linux)
-- `uuidgen` – generated uuid
-- `screen `- screen window manager that multiplexes a physical terminal between several processes. Useful e.g. when having multiple screens per one ssh connection
-- `grabserial` - reads a serial port and writes the data to standard output. Useful e.g. to measure system boot time (`-t` option)
-- `echo $?` – exit code of the last executed program
 
 ## Git
 
@@ -337,4 +329,13 @@ List subtrees merged to your project:
 Diff commited file to the previous commit:
 
 `git diff HEAD@{1} filename`
+
+## Miscellaneous
+- `date MMDDhhmmYYYY`  - set date
+- `ntpd –s` – set time immidiately (OpenBSD)
+- `ntpd –q` – set time and exit (Linux)
+- `uuidgen` – generated uuid
+- `screen `- screen window manager that multiplexes a physical terminal between several processes. Useful e.g. when having multiple screens per one ssh connection
+- `grabserial` - reads a serial port and writes the data to standard output. Useful e.g. to measure system boot time (`-t` option)
+- `echo $?` – exit code of the last executed program
 
