@@ -208,9 +208,11 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `-s file` - Check if file has size greater than 0.
 - `-d file` - Check if file is a directory.
 - `-e file` - Check if file exists. Is true even if file is a directory
-- ```if [ -f file ] ; then
-   echo $file exists 
-fi```
+```bash
+  if [ -f file ] ; then
+    echo $file exists 
+  fi
+```
 
 ### Checking strings:
 - `[ "$s1" = "$s2" ]` - Check if s1 equals s2.
@@ -229,7 +231,7 @@ fi```
 - `[ "$n1" -ge "$n2" ]` or `((n1 >= n2))` -  Check to see if n1 >= n2.
 - Arithmetic expansion: `i=$(( (i + 1) % 5 ))`
 - Boolean operators:
--`!`  - not
+- `!`  - not
 - `-a` - and
 - `-o`  - or
 
