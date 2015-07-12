@@ -359,7 +359,7 @@ Additionally, you should make the directory and all directories below it `"set G
 
 Find all files in `/var/www` and add read and write permission for owner and group:
 
-``sudo find `/var/www -type f -exec chmod ug+rw {} \;` ``
+`sudo find /var/www -type f -exec chmod ug+rw {} \;`
 
 You might have to log out and log back in to be able to make changes if you're editing permission for your own account.
 
