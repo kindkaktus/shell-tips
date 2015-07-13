@@ -348,7 +348,7 @@ To best share with multiple users who should be able to write in `/var/www`, it 
 
 - Make sure all the users who need write access to `/var/www` are in this group.
 
-  `sudo usermod -a -G www-data <some_user>`
+`sudo usermod -a -G www-data <some_user>`
 
 - Give `www-data` group ownership of `/var/www`:
 
