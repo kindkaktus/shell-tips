@@ -348,19 +348,19 @@ To best share with multiple users who should be able to write in `/var/www`, it 
 
 - Make sure all the users who need write access to `/var/www` are in this group.
 
-`sudo usermod -a -G www-data <some_user>`
+  `sudo usermod -a -G www-data <some_user>`
 
 - Give `www-data` group ownership of `/var/www`:
 
-`sudo chgrp -R www-data /var/www`
+  `sudo chgrp -R www-data /var/www`
 
 - Give `www-data` group write permissions on `/var/www`:
 
-`sudo chmod -R g+w /var/www`
+  `sudo chmod -R g+w /var/www`
 
 - Additionally, you can set setgid on all directories under `/var/www` to have all files created under `/var/www` to be owned by the `www-data` group.
 
-`sudo find /var/www -type d -exec chmod g+s {} \; `
+  `sudo find /var/www -type d -exec chmod g+s {} \; `
 
 You might have to log out and log back in to be able to make changes if you're editing permission for your own account.
 
