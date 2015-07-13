@@ -346,22 +346,21 @@ Taken from [here](http://superuser.com/questions/19318/how-can-i-give-write-acce
  
 To best share with multiple users who should be able to write in `/var/www`, it should be assigned a common group. For example the default group for web content on Ubuntu and Debian is `www-data`. 
 
-1. Make sure all the users who need write access to `/var/www` are in this group.
+- Make sure all the users who need write access to `/var/www` are in this group.
 
-`sudo usermod -a -G www-data <some_user>`
+  `sudo usermod -a -G www-data <some_user>`
 
-2. Then give this group write permissions on `/var/www`:
+- Then give this group write permissions on `/var/www`:
 
 ```bash
   sudo chgrp -R www-data /var/www
   sudo chmod -R g+w /var/www
 ```
 
-3. Additionally, you can set setgid on all directories under `/var/www` to have all files created under `/var/www` to be owned by the `www-data` group.
-
+- Additionally, you can set setgid on all directories under `/var/www` to have all files created under `/var/www` to be owned by the `www-data` group.
 `sudo find /var/www -type d -exec chmod g+s {} \; `
 
-4. Finally, give all files in `/var/www` read and write permission for owner and group:
+- Finally, give all files in `/var/www` read and write permission for owner and group:
 
 `sudo find /var/www -type f -exec chmod ug+rw {} \;`
 
