@@ -348,7 +348,7 @@ To best share with multiple users who should be able to write in `/var/www`, it 
 
 - Make sure all the users who need write access to `/var/www` are in this group.
 
-  `sudo usermod -a -G www-data <some_user>`
+  `sudo usermod -a -G www-data phpadmin`
 
 - Give `www-data` group ownership of `/var/www`:
 
@@ -358,9 +358,13 @@ To best share with multiple users who should be able to write in `/var/www`, it 
 
   `sudo chmod -R g+w /var/www`
 
-- Additionally, you can set setgid on all directories under `/var/www` to have all files created under `/var/www` to be owned by the `www-data` group.
+- It is also recommended that you set setgid on `/var/www` to have all files created under `/var/www` owned by the `www-data` group.
 
   `sudo find /var/www -type d -exec chmod g+s {} \; `
+  
+Notice that it it not possible set setuid on `/var/www` so that all new files created under `/var/www` owned by the `phpadmin` user (only possible on FreeBSD). The best you can do is to give all *existing* files in `/var/www` read and write permission for owner and group:
+
+  `sudo find /var/www -type f -exec chmod ug+rw {} \;`
 
 You might have to log out and log back in to be able to make changes if you're editing permission for your own account.
 
