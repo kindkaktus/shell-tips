@@ -358,6 +358,7 @@ To best share with multiple users who should be able to write in `/var/www`, it 
 ```
 
 - Additionally, you can set setgid on all directories under `/var/www` to have all files created under `/var/www` to be owned by the `www-data` group.
+
 `sudo find /var/www -type d -exec chmod g+s {} \; `
 
 - Finally, give all files in `/var/www` read and write permission for owner and group:
