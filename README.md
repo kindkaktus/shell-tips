@@ -324,6 +324,28 @@ List subtrees merged to your project:
 `git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq`
 
 
+### Pretty print logs
+```
+git config --global alias.lg "log --color=auto --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold black)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
+git config --global alias.lg2 "log --color=auto --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(cyan)%aD%C(reset) %C(green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold black)- %an%C(reset)' --all"
+```
+
+### Pretty print status
+```
+git config --global status.color "auto"
+git config --global color.status.added "green"`
+git config --global color.status.changed "bold blue"
+git config --global color.status.untracked "magenta"
+git config --global color.status.deleted "red"`
+```
+
+### Convenience aliases
+```
+git config --global alias.ci "commit"
+git config --global alias.st "status"
+git config --global alias.di "diff"
+```
+
 ### Misc git gotchas
 
 Diff commited file to the previous commit:
