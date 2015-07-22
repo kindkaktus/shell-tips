@@ -333,10 +333,10 @@ git config --global alias.lg2 "log --color=auto --graph --abbrev-commit --decora
 ### Pretty print status
 ```
 git config --global status.color "auto"
-git config --global color.status.added "green"`
+git config --global color.status.added "green"
 git config --global color.status.changed "bold blue"
 git config --global color.status.untracked "magenta"
-git config --global color.status.deleted "red"`
+git config --global color.status.deleted "red"
 ```
 
 ### Convenience aliases
