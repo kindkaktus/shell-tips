@@ -199,6 +199,7 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `!< num>` - execite the command number num from the history list
 - `Ctrl+R` – search history in reverse order, press Ctrl+R to search further
 - `shopt –s dotglob` – enable visibility of hidden files in bash shell
+- To go to a new line in shell hit `Enter` after typing `\`
 
 ### Checking files:
 - `-r file` - Check if file is readable.
