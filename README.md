@@ -205,7 +205,7 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
   FILES="file1 file2 file3"
   for file in $FILES ; do sed '/pattern/i\
   string\
-  /' $file > "$file.new" && mv $file.new $file ; done
+  ' $file > "$file.new" && mv $file.new $file ; done
 ``` 
 
 
