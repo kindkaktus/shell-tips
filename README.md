@@ -41,6 +41,16 @@ Useful grep options:
 - `-C <num>` – show number of surrounding lines of match
 - `-A <num>` or `–B <num>` – show a number of lines after or before the match
 
+
+- Parsing space-delimited text
+
+  ```
+  cat file | grep '[j]boss' | awk '{print $4}
+  cat file | awk '/[j]boss/ {print $4}'
+  cat file | grep '[j]boss' | sed 's/\s\s*/ /g' | cut -d' ' -f4
+  ```
+
+
 - `locate something` -  find a file anywhere by name, but bear in mind updatedb may not have indexed recently created files
 - `which`, `whereis`, `type` – locate the binary, source and manual page for a command
 - `file` – determine file type
