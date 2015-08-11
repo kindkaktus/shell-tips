@@ -49,7 +49,10 @@ Useful grep options:
   cat file | awk '/[j]boss/ {print $4}'
   cat file | grep '[j]boss' | sed 's/\s\s*/ /g' | cut -d' ' -f4
   ```
+  
+- Changing file in-place
 
+  `sed -i -r 's/^[;]?display_errors\s*=.*$/display_errors = On/' /etc/php5/apache2/php.ini`
 
 - `locate something` -  find a file anywhere by name, but bear in mind updatedb may not have indexed recently created files
 - `which`, `whereis`, `type` – locate the binary, source and manual page for a command
