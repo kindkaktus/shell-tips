@@ -315,6 +315,7 @@ Tricky: if there are at least one file matching `/var/log/*.log`, the loop behav
 - `openssl smime -verify -in signed.pkcs7.smime -CAfile signingcertca.pem` – verify SMIME-signed message against the issuer CA
 - `openssl smime -verify -in message -noverify -signer cert.pem` – extract cert from SMIME-signed message to cert.pem
 - `openssl rsa -in privateKey.pem -out newPrivateKey.pem` – remove passphrase from RSA private key
+- `openssl rsa -in private.key -inform PEM  -out private-rsa.key -outform PEM` - convert PKCS#8 private key (i.e. the one with `BEGIN PRIVATE KEY` header) to PKCS#1 RSA private key (i.e. the one with `BEGIN RSA PRIVATE KEY` header)
 - `openssl pkcs12 –nodes -in file.pfx -out file.pem` – extract all from PKCS#12 package
 - `echo –n "some text" | openssl base64 –e` - base64 encode
 - `echo "ABCDEF==" | openssl base64 –d` – base64-decode
