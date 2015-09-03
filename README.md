@@ -45,7 +45,7 @@ Useful grep options:
 - Parsing space-delimited text
 
   ```
-  cat file | grep '[j]boss' | awk '{print $4}
+  cat file | grep '[j]boss' | awk '{print $4}'
   cat file | awk '/[j]boss/ {print $4}'
   cat file | grep '[j]boss' | sed 's/\s\s*/ /g' | cut -d' ' -f4
   ```
