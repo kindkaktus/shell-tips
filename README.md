@@ -306,6 +306,7 @@ Tricky: if there are at least one file matching `/var/log/*.log`, the loop behav
 - `alt-b` and `alt-f` to move by word
 - `ctrl-k` to kill to the end of the line
 - `(cd /some/other/dir; other-command)` - do something in `/some/other/dir` dir, continue in the current dir after the subshell finishes
+- `set -x` - enable debugging of bash script
 
 ## Crypto
 
