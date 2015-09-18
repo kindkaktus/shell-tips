@@ -41,6 +41,13 @@ Useful grep options:
 - `-C <num>` – show number of surrounding lines of match
 - `-A <num>` or `–B <num>` – show a number of lines after or before the match
 
+- `echo '12.34.5' | egrep -o [0-9]+` - print each match on a separate line:
+
+  ```
+  12
+  34
+  5
+  ```
 
 - Parsing space-delimited text
 
