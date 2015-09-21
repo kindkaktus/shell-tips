@@ -396,6 +396,8 @@ Revert local modifications to a file
   2. `git cherry-pick -m 1 <sha-of-the-merge-commit>`
   3. Now just add remaining commits e.g. by cherry picking them, reshuffling them as you wish
 
+#### Good git commit messages
+ Check this out [The seven rules of a great git commit message](http://chris.beams.io/posts/git-commit/)
 
 
 ## Miscellaneous
