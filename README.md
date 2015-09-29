@@ -395,7 +395,7 @@ Checkout remote branch overwriting a local branch
 
 `git checkout -B feature/#421 origin/feature/#421`
 
-#### Rewrite merge commit (making merge branck disappear)
+#### Rewrite merge commit (making merge branch disappear)
   1. Reset master branch to the commit in the master branch before the merge
   2. `git cherry-pick -m 1 <sha-of-the-merge-commit>`
   3. Now just add remaining commits e.g. by cherry picking them, reshuffling them as you wish
