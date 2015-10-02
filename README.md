@@ -400,6 +400,14 @@ Checkout remote branch overwriting a local branch
 
 `git checkout -B feature/#421 origin/feature/#421`
 
+Duplicate repo including all branches and tags
+
+```
+git clone --bare <original-repo-url> <clone-dir>
+cd <clone-dir>
+git push --mirror <new-repo-url>
+```
+
 
 #### Good git commit messages
  Check this out [The seven rules of a great git commit message](http://chris.beams.io/posts/git-commit/)
