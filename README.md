@@ -388,10 +388,6 @@ Diff commited file to the previous commit:
 
 `git diff HEAD@{1} filename`
 
-Forcibly checkout origin/master to master
-
-`git checkout -B master origin/master`
-
 Revert local modifications to a file
 
 `git checkout filename`
