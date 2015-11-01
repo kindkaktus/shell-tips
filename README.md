@@ -189,10 +189,10 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 ## Network
 - For web debugging, `curl` especiallt `curl -I`, `wget`, and the more modern `httpie`
 - `dstat` = `vmstat` + `iostat` + `ifstat`
-- `netstat –anp` - all
-- `netstat --inet -anp` - TCP и UDP
-- `netstat –tanp` - TCP only
-- `netstat –a –p tcp | grep LISTEN` – list of listening TCp ports (works in OpenBSD)
+- `netstat -tlnp` - show all TCP listening sockets
+- `netstat –a –p tcp | grep LISTEN` – show all listening TCP sockets (works in OpenBSD)
+- `netstat –tanp` - show all TCP listening sockets and TCP sockets with established connections
+- `netstat –anp` - show all (TCP and UDP) listening sockets and sockets with established connections
 - `nmap` – network exploration tool and security scanner (e.g. ports scanner)
 - `xprobe (xprobe2)` – OS fingerprint scanner (guesses OS version)
 - `finger` – look up users of (remote) OS
