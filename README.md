@@ -408,7 +408,13 @@ git push --mirror <new-repo-url>
 #### Good git commit messages
  Check this out [The seven rules of a great git commit message](http://chris.beams.io/posts/git-commit/)
 
+## Docker
 
+Cleanup all stopped containers and untagged images
+```
+docker rm $(docker ps -a -q)
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+```
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
 - `ntpd –s` – set time immidiately (OpenBSD)
