@@ -269,6 +269,28 @@ Parentheses may be used for grouping, but must be preceded by backslashes since 
 - `if test \( -r $file1 -a -r $file2 \) -o \( -r $1 -a -r $2 \)  ; then … fi`
 - Arithmetic expansion: `i=$(( (i + 1) % 5 ))`
 
+### Caveat with set -e
+
+```
+set -e
+
+function bad_func() { return 1; }
+
+function func()
+{
+    bad_func
+    echo "Bad function is called"
+}
+
+if ! func ; then
+    echo "SURPRISE We don't get here!"
+fi
+
+func || echo "SURPRISE! We don't get here!"
+
+func
+echo "CORRECT! We don't get here!"
+```
 
 ### Parameter substitution in BASH:
 - `${parameter-default}` If parameter not declared, use default
