@@ -288,8 +288,25 @@ fi
 
 func || echo "SURPRISE! We don't get here!"
 
+local var=$(func)             
+echo "SURPRISE We get here!"
+```
+```
 func
 echo "CORRECT! We don't get here!"
+```
+```
+local var
+var=$(func)             
+echo "CORRECT We don't get here!"
+```
+```
+VAR=$(func)     
+echo "CORRECT We don't get here!"
+```
+
+
+
 ```
 
 ### Parameter substitution in BASH:
