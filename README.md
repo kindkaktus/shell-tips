@@ -288,26 +288,34 @@ fi
 
 func || echo "SURPRISE! We don't get here!"
 
-local var=$(func)             
-echo "SURPRISE We get here!"
-```
-```
 func
 echo "CORRECT! We don't get here!"
 ```
-```
-local var
-var=$(func)             
-echo "CORRECT We don't get here!"
-```
-```
-VAR=$(func)     
-echo "CORRECT We don't get here!"
-```
 
-
+### Caveat with local variables
 
 ```
+set -e
+
+function bad_func() { return 1; }
+
+function func1()
+{
+  local var=$(bad_func)             
+  echo "SURPRISE We get here!"
+}
+
+function func2()
+{
+  local var
+  var=$(bad_func)             
+  echo "CORRECT! We never get here!"
+}
+
+VAR=$(bad_func)     
+echo "CORRECT! We never get here!"
+```
+
 
 ### Parameter substitution in BASH:
 - `${parameter-default}` If parameter not declared, use default
