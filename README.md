@@ -199,6 +199,7 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `rpcinfo` – reports rpc information of the (remote) host
 - `netcat` - network utility for reading from and writing to network connections on either TCP or UDP
 - `netcat $ip $port </dev/zero` – send stream of zeroes to the server (might be useful for testing)
+- `netcat -l 8888 < index.html` - simple web server
 - `lsof -i TCP:1234 open` – who is listeinng port 1234.
 - `fuser` – identify processes using files and sockets
 - `host [pcname]` – DNS lookup (of pcname).
