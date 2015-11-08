@@ -401,7 +401,7 @@ git push
 Sample merge session
 ```
 git checkout -B master origin/master
-git merge --no-ff --no-commit origin/KEYATLK-123
+git merge --no-ff --no-commit origin/feature
 git diff master
 git commit -a
 git push
