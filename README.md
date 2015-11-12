@@ -448,6 +448,10 @@ Revert local modifications to a file
 
 `git checkout filename`
 
+Revert all local modifications
+
+`git checkout -f`
+
 Checkout remote branch overwriting a local branch
 
 `git checkout -B feature/#421 origin/feature/#421`
