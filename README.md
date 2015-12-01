@@ -159,9 +159,8 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `ps –o pid,cmd –ppid <ppid>`  - get processes having parent <ppid>
 - `pstree –p` – display process tree
 - `cat /proc/self` – info about self
-- `command &`  run command in the background. 
-- `fg` - bring a background or stopped process to the foreground. 
-- `bg` - send the process to the background. The same can be accomplished with Ctrl-z. 
+- `command &`  run command in the background
+- `Ctrl-z + bg` - interactively move the current foreground process to the background
 - `kill <pid>` - try to kill the process with SIGTERM.
 - `kill -9 <pid>` - kill the process with SIGKILL, unlike SIGTREM the SIGKILL cannot be caught by a process.
 - `killall <name>` - kill all processes with the specified name.
