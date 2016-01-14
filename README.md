@@ -443,6 +443,10 @@ Diff commited file to the previous commit:
 
 `git diff HEAD@{1} filename`
 
+Diff ignoring whitespace:
+
+`git diff -w filename`
+
 Revert local modifications to a file
 
 `git checkout filename`
