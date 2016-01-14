@@ -443,9 +443,9 @@ Diff commited file to the previous commit:
 
 `git diff HEAD@{1} filename`
 
-Diff ignoring whitespace:
+Diff between the current and the previous commit, ignoring whitespace:
 
-`git diff -w filename`
+` git diff -w HEAD^ HEAD`
 
 Revert local modifications to a file
 
