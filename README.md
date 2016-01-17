@@ -3,7 +3,7 @@ Tips for living comfortably in Unix shell
 
 Partially borrowed from [The art of command line](https://github.com/jlevy/the-art-of-command-line)
 - [Processing files and data](#processing-files-and-data)
-- [System administration](#system-administration)
+- [System administration](#system-administration)g
 - [Working with disk] (#working-with-disk)
 - [Manage processes] (#manage-processes)
 - [Network](#network)
@@ -445,8 +445,12 @@ Diff commited file to the previous commit:
 
 Diff between the current and the previous commit, ignoring whitespace:
 
-` git diff -w HEAD^ HEAD`
+`git diff -w HEAD^`
 
+Diff between the current and the previous commit, file names only:
+
+`git diff HEAD^ --name-status`
+ 
 Revert local modifications to a file
 
 `git checkout filename`
