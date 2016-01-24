@@ -3,7 +3,7 @@ Tips for living comfortably in Unix shell
 
 Partially borrowed from [The art of command line](https://github.com/jlevy/the-art-of-command-line)
 - [Processing files and data](#processing-files-and-data)
-- [System administration](#system-administration)g
+- [System administration](#system-administration)
 - [Working with disk] (#working-with-disk)
 - [Manage processes] (#manage-processes)
 - [Network](#network)
