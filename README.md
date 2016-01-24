@@ -271,6 +271,7 @@ https://gist.github.com/kindkaktus/11d7005ddbf955772dbb
 Parentheses may be used for grouping, but must be preceded by backslashes since parentheses normally have a different meaning to the shell (namely to run a command or commands in a subshell)
 - `if test \( -r $file1 -a -r $file2 \) -o \( -r $1 -a -r $2 \)  ; then … fi`
 - Arithmetic expansion: `i=$(( (i + 1) % 5 ))`
+- `[ -f ./file ] || { echo "The file does not exist"; touch ./file; }` - notice colon ; at the end of the expression inside {..}
 
 ### Caveat with set -e
 
