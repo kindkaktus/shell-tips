@@ -537,9 +537,9 @@ Edit `/etc/vsftpd/vsftpd.conf`:
  and restart `vsftpd`
  
 ### Analyse Apache access log for the most frequent source IP addresses
-`tail -10000 access_log | awk '{print $1}' | sort | uniq -c | sort -n | tail`
+`tail -10000 /var/log/apache2/access.log | awk '{print $1}' | sort | uniq -c | sort -n | tail`
  
 ### Analyse Apache access log for the most frequent source user agent
-`tail -10000 access_log | awk '{print $12}' | sort | uniq -c | sort -n | tail`
+`tail -10000 /var/log/apache2/access.log | awk '{print $12}' | sort | uniq -c | sort -n | tail`
  
 
