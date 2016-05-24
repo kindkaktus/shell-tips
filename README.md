@@ -489,7 +489,7 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
 - `ntpd –s` – set time immidiately (OpenBSD)
-- `ntpd –q` – set time and exit (Linux)
+- `ntpd -gq` – set time and exit (Linux)
 - `uuidgen` – generated uuid
 - `screen `- screen window manager that multiplexes a physical terminal between several processes. Useful e.g. when having multiple screens per one ssh connection
 - `grabserial` - reads a serial port and writes the data to standard output. Useful e.g. to measure system boot time (`-t` option)
