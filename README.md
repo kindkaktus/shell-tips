@@ -544,7 +544,7 @@ Edit `/etc/vsftpd/vsftpd.conf`:
 
 
 ### See package changelog
-`apt-get changelog <package>` - for Debian/Ubuntu
-`rpm -q --changelog <package> | head` - for CentOS
+- `apt-get changelog <package>` - for Debian/Ubuntu
+- `rpm -q --changelog <package> | head` - for CentOS
  
 
