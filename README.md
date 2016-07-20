@@ -541,5 +541,10 @@ Edit `/etc/vsftpd/vsftpd.conf`:
  
 ### Analyse Apache access log for the most frequent source user agent
 `tail -10000 /var/log/apache2/access.log | awk '{print $12}' | sort | uniq -c | sort -n | tail`
+
+
+### See package changelog
+`apt-get changelog <package>` - for Debian/Ubuntu
+`rpm -q --changelog <package> | head` - for CentOS
  
 
