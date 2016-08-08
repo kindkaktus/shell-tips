@@ -381,6 +381,7 @@ Tricky: if there are at least one file matching `/var/log/*.log`, the loop behav
 - `echo -n "text" | md5sum` - calculate MD5 digest of the file 
 - `echo –n "text" | uuencode –m /dev/stdout`  - base64-encode
 - `htpasswd [–c] passwd_file username` - generate Apache password for username and store it to passwd_file. `–c` option is used to create a new passwd-file instead of adding lines to an existing one.
+- `echo -n | openssl s_client -showcerts -connect github.com:443  2>/dev/null  | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /usr/local/share/ca-certificates/DigiCert-CA.crt && update-ca-certificates` - quick install github CA certificates to the trusted store
 
 
 ## Git
