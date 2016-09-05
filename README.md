@@ -217,7 +217,14 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 
 ## Bash 
 - `!< num>` - execite the command number num from the history list
-- `Ctrl+R` – search history in reverse order, press Ctrl+R to search further
+- `Ctrl + r` – search history in reverse order, press `Ctrl + r` to search further
+- `Ctrl + a` – go to the start of the command line
+- `Ctrl + e` – go to the end of the command line
+- `Ctrl + k` – delete from cursor to the end of the command line
+- `Ctrl + u` – delete from cursor to the start of the command line
+- `Ctrl + y` – paste word or text that was cut using one of the deletion shortcuts (such as the one above) after the cursor
+- `Alt + b` – move backward one word (or go to start of word the cursor is currently on)
+- `Alt + f` – move forward one word (or go to end of word the cursor is currently on)
 - `shopt –s dotglob` – enable visibility of hidden files in bash shell
 - To go to a new line in shell hit `Enter` after typing `\`
 - insert `string` before `pattern` in the given files. Works on OpenBSD for sure.
