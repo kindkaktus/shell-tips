@@ -473,7 +473,34 @@ Revert all local modifications
 
 Checkout remote branch overwriting a local branch
 
-`git checkout -B feature/#421 origin/feature/#421`
+`git checkout -B my-branch origin/my-branch`
+
+Oh shit, I accidentally committed something to master that should have been on a brand new branch!
+```
+# create a new branch from the current state of master
+git branch new-branch-name
+# remove the commit from the master branch
+git reset HEAD~ --hard
+git checkout new-branch-name
+```
+
+Oh shit, I accidentally committed to the wrong branch!
+```
+git reset HEAD~ --soft
+git stash
+# move to the correct branch
+git checkout name-of-the-correct-branch
+git stash pop
+git add . # or add individual files
+git commit -m "your message here"
+```
+another way is to use cherry-pick
+```
+git checkout name-of-the-correct-branch
+git cherry-pick master
+git checkout master
+git reset HEAD~ --hard
+```
 
 Duplicate repo including all branches and tags
 
