@@ -390,7 +390,13 @@ Tricky: if there are at least one file matching `/var/log/*.log`, the loop behav
 - `htpasswd [–c] passwd_file username` - generate Apache password for username and store it to passwd_file. `–c` option is used to create a new passwd-file instead of adding lines to an existing one.
 - `echo -n | openssl s_client -showcerts -connect github.com:443  2>/dev/null  | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /usr/local/share/ca-certificates/DigiCert-CA.crt && update-ca-certificates` - quick install github CA certificates to the trusted store
 
-
+### Signing others' certificate requests with our CA and key
+```bash
+cat signingca.pem signingkey.pem rootca.pem > signingcacertkey.pem
+openssl x509 -req -in certreq.p10 -sha256 -extfile openssl.cnf -extensions usr_cert -CA signingcacertkey.pem -CAkey signingcacertkey.pem -CAcreateserial -out cert.pem -days 365
+# produce also PKCS#7 cert
+openssl crl2pkcs7 -nocrl -certfile cert.pem -out cert.p7b -certfile signingcacertkey.pem
+```
 ## Git
 
 ### Manage git subtrees
