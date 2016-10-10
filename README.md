@@ -245,7 +245,7 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `-d file` - Check if file is a directory.
 - `-e file` - Check if file exists. Is true even if file is a directory
 ```bash
-  if [ -f file ] ; then
+  if [ -f "$file" ] ; then
     echo $file exists 
   fi
 ```
