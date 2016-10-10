@@ -353,15 +353,24 @@ echo "CORRECT! We never get here!"
 - `${0%/*.*}` – retrieves script directory name (same as `$(dirname $0)`, but much faster)
 - `${0##/*/}` – retrieves script base name (same as `$(basename $0)`, but much faster)
 
-### Loops in Bash
+### Bash: copy files by mask
 ```bash
   for file in "file1 file2 /var/log/*.log"
   do
+      [ -f "$file" ] || continue 
       cp $file /tmp
   done
 ```
-Tricky: if there are at least one file matching `/var/log/*.log`, the loop behaves as expected and will copy `file1`, `file2` and all these log files to `/tmp`. However if there are no files matching ther pattern, the pattrern itself will be substituted for `cp` which will produce error: `cp: /var/log/*.log: No such file or directory`
+Notice: [ -f "$file" ] check is necessart because if there are no files matching /var/log/*.log, the pattrern itself will be substituted for `cp` which will produce error: `cp: /var/log/*.log: No such file or directory`
+Another correct way to copy files by mask is:
+`find . -type f -exec some command {} \;`
 
+WRONG way to copy files by mask (though used very often):
+```
+for i in $(ls *.mp3); do    # WRONG because of word splittling (file names with spaces), globbing and because 'ls' may corrupt file names
+    some command "$i"         
+done
+```
 ## Bash other
 - `source <file>`- include another file
 - `. <file>` – include another file; the dot-syntax is more portable
