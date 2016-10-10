@@ -361,13 +361,13 @@ echo "CORRECT! We never get here!"
       cp $file /tmp
   done
 ```
-Notice: [ -f "$file" ] check is necessart because if there are no files matching /var/log/*.log, the pattrern itself will be substituted for `cp` which will produce error: `cp: /var/log/*.log: No such file or directory`
+Notice: [ -f "$file" ] check is necessary because if there are no files matching `/var/log/*.log`, the pattrern itself will be substituted for `cp` which will produce error: `cp: /var/log/*.log: No such file or directory`
 Another correct way to copy files by mask is:
 `find . -type f -exec some command {} \;`
 
 WRONG way to copy files by mask (though used very often):
 ```
-for i in $(ls *.mp3); do    # WRONG because of word splittling (file names with spaces), globbing and because 'ls' may corrupt file names
+for i in $(ls *.mp3); do    # WRONG because of word splittling (file names with spaces), globbing and because `ls` may corrupt file names
     some command "$i"         
 done
 ```
