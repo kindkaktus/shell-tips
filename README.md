@@ -272,16 +272,15 @@ https://gist.github.com/kindkaktus/11d7005ddbf955772dbb
 ### Quoting in BASH:
 - `echo '$1$2hello'` - Writes literally $1$2hello on screen.
 - `echo "$1$2hello"` - Writes value of parameters 1 and 2 and string hello
-- 
 ```bash
 v=' one    two  
 three '
-echo $v # will replace all whitespaces with a single space and output `one two three`
-echo "$v" # will print $v as is
+echo $v # will replace all whitespaces with a single space and output one two three
+echo "$v" # will print the value of $v as is
 
 v="*.sh"
-echo $v  # will print `test1.sh test2.sh`
-echo "$v" # will print `*.sh`
+echo $v  # will print test1.sh test2.sh
+echo "$v" # will print *.sh
 ```
 
 ### Grouping in BASH:
