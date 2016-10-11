@@ -284,7 +284,9 @@ echo "$v" # will print *.sh
 ```
 
 ### Grouping in BASH:
-Parentheses may be used for grouping, but must be preceded by backslashes since parentheses normally have a different meaning to the shell (namely to run a command or commands in a subshell)
+Parentheses may be used for grouping, but must be preceded by backslashes since parentheses normally have a different meaning to the shell (namely to run a command or commands in a 
+
+)
 - `[ "$bar1" = "$foo1" ] && [ "$bar2" = "$foo2" ]` - POSIX
 - `[[ "$bar1" == "$foo1" && "$bar2" = "$foo2" ]]`  - Bash / Ksh
 - `if test \( -r $file1 -a -r $file2 \) -o \( -r $1 -a -r $2 \)  ; then … fi`
@@ -390,7 +392,7 @@ done
 - `ctrl-u` - to delete the whole line.
 - `alt-b` and `alt-f` to move by word
 - `ctrl-k` to kill to the end of the line
-- `(cd /some/other/dir; other-command)` - do something in `/some/other/dir` dir, continue in the current dir after the subshell finishes
+- `(cd somedir || exit; some-command)` - do something in `somedir` dir, continue in the current dir after the subshell finishes
 - `set -x` - enable debugging of bash script
 
 ## Crypto
