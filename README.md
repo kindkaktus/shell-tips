@@ -272,7 +272,21 @@ https://gist.github.com/kindkaktus/11d7005ddbf955772dbb
 ### Quoting in BASH:
 - `echo '$1$2hello'` - Writes literally $1$2hello on screen.
 - `echo "$1$2hello"` - Writes value of parameters 1 and 2 and string hello
-- `echo "$VAR" vs echo $VAR` - the double-quoted version preserves internal spacing such as newlines, tabs and multiple blanks, whereas the unquoted version replaces each sequence of one or more blanks, tabs and newlines with a single space
+- ```
+# v=' one    two  
+three '
+# echo $v
+one two thrww
+# echo "$v"
+ one    two  
+three
+
+# v="*.sh"
+# echo $v
+test1.sh test2.sh
+# echo "$v"
+*.sh
+```
 
 ### Grouping in BASH:
 Parentheses may be used for grouping, but must be preceded by backslashes since parentheses normally have a different meaning to the shell (namely to run a command or commands in a subshell)
