@@ -257,6 +257,12 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `[ -n "$s1" ]` - Check if s1 has nonzero size.
 - `[ "$s1" ]` - Check if s1 is not the empty string.
 - `[[ "$s1" < "$s2" ]] or [ "$s1" \< "$s2" ]` - Check if s1 is less than s2 in alphabetical order
+- Checking using regex:
+```
+re='some REGEX'
+if [[ $foo =~ $re ]]
+...
+``` 
 
 ### Checking numbers:
 - `[ "$n1" -eq "$n2" ]` -  Check to see if n1 equals n2
