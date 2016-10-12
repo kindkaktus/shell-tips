@@ -298,9 +298,10 @@ Parentheses may be used for grouping, but must be preceded by backslashes since 
 ```
 set -e
 
-function bad_func() { return 1; }
 
-function func()
+bad_func() { return 1; }
+
+func()
 {
     bad_func
     echo "Bad function is called"
@@ -321,15 +322,15 @@ echo "CORRECT! We don't get here!"
 ```
 set -e
 
-function bad_func() { return 1; }
+bad_func() { return 1; }
 
-function func1()
+func1()
 {
   local var=$(bad_func)             
   echo "SURPRISE We get here!"
 }
 
-function func2()
+func2()
 {
   local var
   var=$(bad_func)             
@@ -339,6 +340,10 @@ function func2()
 VAR=$(bad_func)     
 echo "CORRECT! We never get here!"
 ```
+
+### Tips for defining function
+- `foo() {...}` - ok and portable
+- `function doo() {...}` - ok in bash but not widely portable 
 
 ### Parse command line arguments in BASH
 Correct:
