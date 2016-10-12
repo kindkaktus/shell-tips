@@ -266,6 +266,13 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `[ "$n1" -gt "$n2" ]` or `((n1 > n2))` - Check to see if n1 > n2.
 - `[ "$n1" -ge "$n2" ]` or `((n1 >= n2))` -  Check to see if n1 >= n2.
 
+### Loops in bash
+```
+for ((i=1; i<=n; i++)); do
+...
+done
+```
+
 ### Colorizing bash
 https://gist.github.com/kindkaktus/11d7005ddbf955772dbb
 
