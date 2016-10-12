@@ -340,6 +340,27 @@ VAR=$(bad_func)
 echo "CORRECT! We never get here!"
 ```
 
+### Parse command line arguments in BASH
+Correct:
+```
+for x in "$@"; do
+  echo "parameter: '$x'"
+done
+```
+
+Also correct:
+```
+for x; do
+  echo "parameter: '$x'"
+done
+```
+
+Not correct:
+```
+for x in $*; do
+  echo "parameter: '$x'"
+done
+```
 
 ### Parameter substitution in BASH:
 - `${parameter-default}` If parameter not declared, use default
