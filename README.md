@@ -222,6 +222,7 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `Ctrl + e` – go to the end of the command line
 - `Ctrl + k` – delete from cursor to the end of the command line
 - `Ctrl + u` – delete from cursor to the start of the command line
+- `Ctrl + w` – delete the word before the cursor
 - `Ctrl + y` – paste word or text that was cut using one of the deletion shortcuts (such as the one above) after the cursor
 - `Alt + b` – move backward one word (or go to start of word the cursor is currently on)
 - `Alt + f` – move forward one word (or go to end of word the cursor is currently on)
