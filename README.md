@@ -227,14 +227,6 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `Alt + f` – move forward one word (or go to end of word the cursor is currently on)
 - `shopt –s dotglob` – enable visibility of hidden files in bash shell
 - To go to a new line in shell hit `Enter` after typing `\`
-- insert `string` before `pattern` in the given files. Works on OpenBSD for sure.
-```bash
-  FILES="file1 file2 file3"
-  for file in $FILES ; do sed '/pattern/i\
-  string\
-  ' $file > "$file.new" && mv $file.new $file ; done
-``` 
-
 
 ### Checking files:
 - `-r file` - Check if file is readable.
