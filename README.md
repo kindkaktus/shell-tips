@@ -290,7 +290,7 @@ echo "$v" # will print *.sh
 ```
 
 ### Grouping in BASH:
-#### Uing more concervative single-bracket syntax
+#### Uing more conservative single-bracket syntax
 - `if [ $foo -ge 3 -a $foo -lt 10 ]; then` 
 - `if [ $my_error_flag -eq 1 ] ||  [ $my_error_flag_o -eq 2 ]; then`
 - `if [ $my_error_flag -eq 1 ] ||  [ $my_error_flag_o -eq 2 ] || ([ $my_error_flag -eq 1 ] && [ $my_error_flag_o -eq 2 ]); then`
