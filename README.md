@@ -290,21 +290,22 @@ echo "$v" # will print *.sh
 ```
 
 ### Grouping in BASH:
-#### Uing more convervative single-bracket syntax
+#### Uing more concervative single-bracket syntax
 - `if [ $foo -ge 3 -a $foo -lt 10 ]; then` 
 - `if [ $my_error_flag -eq 1 ] ||  [ $my_error_flag_o -eq 2 ]; then`
 - `if [ $my_error_flag -eq 1 ] ||  [ $my_error_flag_o -eq 2 ] || ([ $my_error_flag -eq 1 ] && [ $my_error_flag_o -eq 2 ]); then`
 - `if [ -f /var/run/reboot-required -o -f /var/run/reboot-required.pkgs ]; then`
+
 #### Using more modern double-bracket syntax
 - `if [[ $num -eq 3 && "$stringvar" == "foo" ]]; then`
 - `if [[ $num -eq 3 -a "$stringvar" == "foo" ]]; then`
 - `if [[ -f /var/run/reboot-required || -f /var/run/reboot-required.pkgs ]]; then`
 
 ### Arithmetic expansion
-- `i=$(( (i + 1) % 5 ))`
+`i=$(( (i + 1) % 5 ))`
 
 ### Caveat with colon
-- `[ -f ./file ] || { echo "The file does not exist"; touch ./file; }` - notice colon ; at the end of the expression inside {..}
+`[ -f ./file ] || { echo "The file does not exist"; touch ./file; }` - notice colon ; at the end of the expression inside {..}
 
 ### Caveat with set -e
 
