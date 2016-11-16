@@ -591,12 +591,18 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 ```
 
 ## Proxy
-### How to set up proxy and proxy traffic from browser and git client
-Setup: work -> proxy server (my-proxy.org) -> internet
+### How to set up a proxy server and proxy traffic from browser on Windows and from git client on Linux
 
 #### 1. Setup proxy server
-Just make sure you run ssh daemon
-#### 2. Setup client machine
+Just make sure you have ssh daemon up and running
+#### 2. Setup browser on Windows client machine
+Create ssh session in Putty with hostname and ssh port of your proxy server.
+Under menu Connection -> SSH -> Tunnels add source port (say, 1337), and destination "dynamic".
+Open this session, enter login credentials and leave the session open
+In your browser (Firefox/Chrome) just specify SOCK5 server localhost and port 1337
+#### 3. Setup git over ssh on Linux client machine
+@todo (use socat)
+
 for more info https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel#step-4-(mac-os-xlinux)-—-creating-shortcuts-for-repeated-use
 
 ## Miscellaneous
