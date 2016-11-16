@@ -10,6 +10,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - [Bash](#bash)
 - [Crypto](#crypto)
 - [Git](#git)
+- [Proxy](#proxy)
 - [Miscellaneous](#miscellaneous)
 
 
@@ -588,6 +589,16 @@ Cleanup all stopped containers and untagged images
 docker rm $(docker ps -a -q)
 docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 ```
+
+## Proxy
+### How to set up proxy and proxy traffic from browser and git client
+Setup: work -> proxy server (my-proxy.org) -> internet
+
+#### 1. Setup proxy server
+Just make sure you run ssh daemon
+#### 2. Setup client machine
+for more info https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel#step-4-(mac-os-xlinux)-—-creating-shortcuts-for-repeated-use
+
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
 - `ntpd –s` – set time immidiately (OpenBSD)
