@@ -604,24 +604,26 @@ In your browser (Firefox/Chrome) just specify SOCK5 server localhost and port 13
 Setup ssh tunnel to your proxy my-proxy.org:2222
 `ssh -D 1337 -f -C -q -N -p 2222 your-username@my-proxy.org`
 enter username and password when prompted
-##### When accessing git repo via 'ssh' protocol e.g. ssh://git@my-repo.com/my-product.git
+##### When accessing git repo via `ssh` protocol e.g. ssh://git@my-repo.com/my-product.git
 add to your ~/.ssh/config file
 ```
 Host my-repo.com
-    User                    git
-    ProxyCommand            nc -x localhost:1337 %h %p
+User                    git
+ProxyCommand            nc -x localhost:1337 %h %p
 ```
 On Linux you should use `connect-proxy`, `socat` or `tsocks` instead of `nc` such as `connect-proxy -S localhost:1337 %h %p`
-##### When accessing git repo via 'http(s)' protocol e.g. https://my-repo.com/my-product.git
+##### When accessing git repo via `http(s)` protocol e.g. https://my-repo.com/my-product.git
 `git config --global http.proxy socks5://localhost:1337`
-##### When accessing git repo via 'git' protocol e.g. git://my-repo.com/my-product.git
+##### When accessing git repo via `git` protocol e.g. git://my-repo.com/my-product.git
 ```
 git config --global core.gitproxy "git-proxy"
 git config --global socks.proxy "localhost:1337"
 ```
 
 for more info:
+
 http://cms-sw.github.io/tutorial-proxy.html
+
 https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel#step-4-(mac-os-xlinux)-—-creating-shortcuts-for-repeated-use
 
 ## Miscellaneous
