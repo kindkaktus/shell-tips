@@ -607,10 +607,11 @@ enter username and password when prompted
 ##### When accessing git repo via 'ssh' protocol e.g. ssh://git@my-repo.com/my-product.git
 add to your ~/.ssh/config file
 ```
-Host github.com
+Host my-repo.com
     User                    git
-    ProxyCommand            nc -x localhost:1080 %h %p
+    ProxyCommand            nc -x localhost:1337 %h %p
 ```
+On Linux you should use `connect-proxy`, `socat` or `tsocks` instead of `nc` such as `connect-proxy -S localhost:1337 %h %p`
 ##### When accessing git repo via 'http(s)' protocol e.g. https://my-repo.com/my-product.git
 `git config --global http.proxy socks5://localhost:1337`
 ##### When accessing git repo via 'git' protocol e.g. git://my-repo.com/my-product.git
