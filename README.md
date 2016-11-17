@@ -591,19 +591,37 @@ docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
 ```
 
 ## Proxy
-### How to set up a proxy server and proxy traffic from browser on Windows and from git client on Linux
+### How to set up a SOCKS proxy server and proxy traffic from browser on Windows and from git client on *nix
 
 #### 1. Setup proxy server
-Just make sure you have ssh daemon up and running
+Just make sure you have ssh daemon up and running. That's the nice thing of SOCKS proxy, once you have sshd running, there is no need for more configuration serve-side.
 #### 2. Setup browser on Windows client machine
 Create ssh session in Putty with hostname and ssh port of your proxy server.
 Under menu Connection -> SSH -> Tunnels add source port (say, 1337), and destination "dynamic".
 Open this session, enter login credentials and leave the session open
 In your browser (Firefox/Chrome) just specify SOCK5 server localhost and port 1337
-#### 3. Setup git over ssh on Linux client machine
-@todo (use socat)
+#### 3. Setup git over ssh on *nix client machine
+Setup ssh tunnel to your proxy my-proxy.org:2222
+`ssh -D 1337 -f -C -q -N -p 2222 your-username@my-proxy.org`
+enter username and password when prompted
+##### When accessing git repo via 'ssh' protocol e.g. ssh://git@my-repo.com/my-product.git
+add to your ~/.ssh/config file
+```
+Host github.com
+    User                    git
+    ProxyCommand            nc -x localhost:1080 %h %p
+```
+##### When accessing git repo via 'http(s)' protocol e.g. https://my-repo.com/my-product.git
+`git config --global http.proxy socks5://localhost:1337`
+##### When accessing git repo via 'git' protocol e.g. git://my-repo.com/my-product.git
+```
+git config --global core.gitproxy "git-proxy"
+git config --global socks.proxy "localhost:1337"
+```
 
-for more info https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel#step-4-(mac-os-xlinux)-—-creating-shortcuts-for-repeated-use
+for more info:
+http://cms-sw.github.io/tutorial-proxy.html
+https://www.digitalocean.com/community/tutorials/how-to-route-web-traffic-securely-without-a-vpn-using-a-socks-tunnel#step-4-(mac-os-xlinux)-—-creating-shortcuts-for-repeated-use
 
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
