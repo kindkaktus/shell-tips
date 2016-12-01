@@ -544,6 +544,10 @@ Checkout remote branch overwriting a local branch
 
 `git checkout -B my-branch origin/my-branch`
 
+Combine two last commits into one
+
+`git reset --soft "HEAD^ && git commit --amend --no-edit`
+
 Oh shit, I accidentally committed something to master that should have been on a brand new branch!
 ```
 # create a new branch from the current state of master
