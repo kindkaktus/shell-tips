@@ -438,6 +438,7 @@ done
 ## Crypto
 
 - `openssl x509 -noout -text -in cert.pem` – view cert info (show only the first cert)
+- `openssl x509 -noout -text -fingerprint -sha1 -in cert.pem` – view cert info including its sha1 fingerptint
 - `openssl x509 -purpose -in cert.pem –noout` – view effective cert purposes (show only the first cert)
 - `openssl crl2pkcs7 -nocrl -certfile certs.pem | openssl pkcs7 -print_certs -text -noout` - view cert info (show all certs found in certs.pem)
 - `openssl smime -sign -in text.txt -signer signingcertkey.pem -inkey signingcertkey.pem -out signed.pkcs7.smime` – SMIME sign 
