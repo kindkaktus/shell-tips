@@ -33,7 +33,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - `find . -name "*.py" -exec grep -qI '\r\n' {} ';' -exec perl -pi -e 's/\r\n/\n/g' {} '+'` -  fix CRLF to LF lineendings in all .py files in the current directory
 
 - `od –t x1 file` – print hex chars of file
-- `file myfile` – test newline type used (CRLF/LF)
+- `file myfile` or 'cat -e myfile' – test newline type used (CRLF/LF)
 - `perl -i -pe's/\r$//;' myfile` – replace CRLF -> LF for myfile
 - ``perl -i -pe's/\r$//;' `find . | grep Makefile | xargs` `` - replace CRLF -> LF for makefiles in the current dir recursively (use `od –c <filename>` to test for CRLF)
 
