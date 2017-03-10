@@ -134,6 +134,9 @@ Useful grep options:
 - `for s in /etc/rc$(runlevel  | awk '{ print $2}').d/*; do  basename $s | grep '^S' | sed 's/S[0-9].//g' ;done | sort` – list services started on boot on Debian. As an alternative install `sysv-rc-conf` package. On CentOS use `chkconfig`
 - For a more in-depth system overview, use `glances`. It presents you with several system level statistics in one terminal window. Very helpful for quickly checking on various subsystems.
 - ``dpkg -S `which program-name` `` - check which package `program-name` comes from
+- `systemctl is-enabled <service-name>` - check if a service is currently configured to start on boot
+- `systemctl is-active <service-name>` - check if a service is currently active (running).
+- `systemctl show <service-name>` - show all the information about the service.
 
 ## Working with disk
 - `dstat` = `vmstat` + `iostat` + `ifstat`
