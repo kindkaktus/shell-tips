@@ -139,6 +139,7 @@ Useful grep options:
 - `systemctl show <service-name>` - show all the information about the service.
 
 ## Working with disk
+
 - `dstat` = `vmstat` + `iostat` + `ifstat`
   - `iostat` – brief system disk statistics
 - `du –hs /www` - output the total size of /www folder in a human-readable format
@@ -152,6 +153,16 @@ For looking at why a disk is full, `ncdu` saves time over the usual commands lik
 - `newfs` (BSD) – format partitions
 - `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
+
+### Extending LVM partition
+1. Add physical disk space
+1. Add disk partition (fdisk)
+`fdisk /dev/sda`
+1. Extend volume group with the added partition (vgextend)
+`vgextend ubuntu16-vg /dev/sda3`
+1. Extend logical volume with the added partition
+`lvextend /dev/ubuntu16-vg/root /dev/sda3`
+`resize2fs /dev/ubuntu16-vg/root`
 
 ## Manage processes
 - `dstat` = `vmstat` + `iostat` + `ifstat`
@@ -201,7 +212,7 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 - `xprobe (xprobe2)` – OS fingerprint scanner (guesses OS version)
 - `finger` – look up users of (remote) OS
 - `rpcinfo` – reports rpc information of the (remote) host
-- `netcat $ip $port </dev/zero` – send stream of zeroes to the server (might be useful for testing)
+- `netcat $ip $port < /dev/zero` – send stream of zeroes to the server (might be useful for testing)
 - `echo "hello from server" | netcat -l -p 443` - simple server, can be checked with telnet
 - `python -m SimpleHTTPServer 80` - simple webserver for testing
 - `lsof -i TCP:1234 open` – who is listeinng port 1234.
