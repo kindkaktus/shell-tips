@@ -4,8 +4,8 @@ Tips for living comfortably in Unix shell
 Partially borrowed from [The art of command line](https://github.com/jlevy/the-art-of-command-line)
 - [Processing files and data](#processing-files-and-data)
 - [System administration](#system-administration)
-- [Working with disk] (#working-with-disk)
-- [Manage processes] (#manage-processes)
+- [Working with disk](#working-with-disk)
+- [Manage processes](#manage-processes)
 - [Network](#network)
 - [Bash](#bash)
 - [Crypto](#crypto)
@@ -157,12 +157,17 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 ### Extending LVM partition
 1. Add physical disk space
 1. Add disk partition (fdisk)
+
 `fdisk /dev/sda`
 1. Extend volume group with the added partition (vgextend)
+
 `vgextend ubuntu16-vg /dev/sda3`
 1. Extend logical volume with the added partition
-`lvextend /dev/ubuntu16-vg/root /dev/sda3`
-`resize2fs /dev/ubuntu16-vg/root`
+
+```
+lvextend /dev/ubuntu16-vg/root /dev/sda3`
+`resize2fs /dev/ubuntu16-vg/root
+```
 
 ## Manage processes
 - `dstat` = `vmstat` + `iostat` + `ifstat`
