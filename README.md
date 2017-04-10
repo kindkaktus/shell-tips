@@ -157,11 +157,13 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 ### Extending LVM partition
 1. Add physical disk space
 2. Add disk partition (fdisk)
-
-`fdisk /dev/sda`
+```
+fdisk /dev/sda
+```
 3. Extend volume group with the added partition (vgextend)
-
-`vgextend ubuntu16-vg /dev/sda3`
+```
+vgextend ubuntu16-vg /dev/sda3
+```
 4. Extend logical volume with the added partition
 ```
 lvextend /dev/ubuntu16-vg/root /dev/sda3`
