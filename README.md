@@ -512,6 +512,10 @@ List subtrees merged to your project:
 
 `git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq`
 
+### Housekeeping
+- `git branch -D unneeded-branch` - delete local branch
+- `git push origin --delete unneeded-branch` - delete remote branch
+- `git fetch -p`  - prune remote-tracking branches no longer on remote
 
 ### Pretty print logs
 ```
