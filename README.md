@@ -134,24 +134,24 @@ Useful grep options:
 - `for s in /etc/rc$(runlevel  | awk '{ print $2}').d/*; do  basename $s | grep '^S' | sed 's/S[0-9].//g' ;done | sort` – list services started on boot on Debian. As an alternative install `sysv-rc-conf` package. On CentOS use `chkconfig`
 - For a more in-depth system overview, use `glances`. It presents you with several system level statistics in one terminal window. Very helpful for quickly checking on various subsystems.
 - ``dpkg -S `which program-name` `` - check which package `program-name` comes from
-- `systemctl is-enabled <service-name>` - check if a service is currently configured to start on boot
-- `systemctl is-active <service-name>` - check if a service is currently active (running).
-- `systemctl show <service-name>` - show all the information about the service.
+
 
 ## Systemd and System V (init.d) equivalents
 
 systemd | system V equivalent | description
 --------|---------------------|-------------
-service foobar start	| systemctl start foobar.service	| start a service
-service foobar stop	| systemctl stop foobar.service	| stop a service
-service foobar restart	| systemctl restart foobar.service	| stop and then start a service
-service foobar reload	| systemctl reload foobar.service	| when supported, reloads the config file without interrupting pending operations.
-service foobar status	| systemctl status foobar.service	| Tells whether a service is currently running.
-ls /etc/rc.d/init.d/	| ls /lib/systemd/system/*.service /etc/systemd/system/*.service	| list the services
-chkconfig foobar on | systemctl enable foobar.service | Turn the service on, for start at next boot, or other trigger.
-chkconfig foobar off | systemctl disable foobar.service | Turn the service off for the next reboot, or any other trigger.
-chkconfig foobar | 	systemctl is-enabled foobar.service | check if a service is currently configured to start on boot
-chkconfig foobar –list | 	ls /etc/systemd/system/*.wants/foobar.service |  list what levels this service is configured on or off
+`service foobar start	`| `systemctl start foobar.service`	| start a service
+`service foobar stop`	| `systemctl stop foobar.service`	| stop a service
+`service foobar restart`	| `systemctl restart foobar.service`	| stop and then start a service
+`service foobar reload`	| `systemctl reload foobar.service`	| when supported, reloads the config file without interrupting pending operations
+`service foobar status`	| `systemctl status foobar.service`	| tells whether a service is currently running
+`ls /etc/rc.d/init.d/`	| `ls /lib/systemd/system/*.service /etc/systemd/system/*.service`	| list the services
+`chkconfig foobar on` or `update-rc foobar defaults` | systemctl enable foobar.service | enables the service to start on boot
+`chkconfig foobar off` or `update-rc foobar remove` | `systemctl disable foobar.service` | disables the service to start on boot
+`chkconfig foobar` | 	`systemctl is-enabled foobar.service` | check if a service is currently configured to start on boot
+? | `systemctl is-active <service-name>` | check if a service is currently active (running).
+? | `systemctl show <service-name>` | show all the information about the service.
+`chkconfig foobar –list` | 	`ls /etc/systemd/system/*.wants/foobar.service` |  list what levels this service is configured on or off
 
 ## Working with disk
 
