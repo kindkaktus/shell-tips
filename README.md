@@ -145,8 +145,8 @@ system V |  systemd equivalent | description
 `service foobar restart`	| `systemctl restart foobar.service`	| stop and then start a service
 `service foobar reload`	| `systemctl reload foobar.service`	| when supported, reloads the config file without interrupting pending operations
 `service foobar status`	| `systemctl status foobar.service`	| tells whether a service is currently running
-`ls /etc/rc.d/init.d/`	| `systemctl list-units`	| list the services
-`service --status-all`	| `ls /lib/systemd/system/*.service /etc/systemd/system/*.service`	| list the services
+`ls /etc/rc.d/init.d/`	| `ls /lib/systemd/system/*.service /etc/systemd/system/*.service`	| list the services
+`service --status-all`	| `systemctl list-units`	| list the services
 `chkconfig foobar on` or `update-rc foobar defaults` | systemctl enable foobar.service | enables the service to start on boot
 `chkconfig foobar off` or `update-rc foobar remove` | `systemctl disable foobar.service` | disables the service to start on boot
 `chkconfig foobar` | 	`systemctl is-enabled foobar.service` | check if a service is currently configured to start on boot
