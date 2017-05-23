@@ -140,9 +140,18 @@ Useful grep options:
 
 ## Systemd and System V (init.d) equivalents
 
-systemd | system V equivalent | Description
---------------------------------------------
-service foobar start	| systemctl start foobar.service	| Start a service
+systemd | system V equivalent | description
+--------|---------------------|-------------
+service foobar start	| systemctl start foobar.service	| start a service
+service foobar stop	| systemctl stop foobar.service	| stop a service
+service foobar restart	| systemctl restart foobar.service	| stop and then start a service
+service foobar reload	| systemctl reload foobar.service	| when supported, reloads the config file without interrupting pending operations.
+service foobar status	| systemctl status foobar.service	| Tells whether a service is currently running.
+ls /etc/rc.d/init.d/	| ls /lib/systemd/system/*.service /etc/systemd/system/*.service	| list the services
+chkconfig foobar on | systemctl enable foobar.service | Turn the service on, for start at next boot, or other trigger.
+chkconfig foobar off | systemctl disable foobar.service | Turn the service off for the next reboot, or any other trigger.
+chkconfig foobar | 	systemctl is-enabled foobar.service | check if a service is currently configured to start on boot
+chkconfig foobar –list | 	ls /etc/systemd/system/*.wants/foobar.service |  list what levels this service is configured on or off
 
 ## Working with disk
 
