@@ -138,6 +138,12 @@ Useful grep options:
 - `systemctl is-active <service-name>` - check if a service is currently active (running).
 - `systemctl show <service-name>` - show all the information about the service.
 
+## Systemd and System V (init.d) equivalents
+
+systemd | system V equivalent | Description
+--------------------------------------------
+service foobar start	| systemctl start foobar.service	| Start a service
+
 ## Working with disk
 
 - `dstat` = `vmstat` + `iostat` + `ifstat`
