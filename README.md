@@ -147,12 +147,11 @@ system V |  systemd equivalent | description
 `service foobar status`	| `systemctl status foobar.service`	| tells whether a service is currently running
 `ls /etc/rc.d/init.d/`	| `ls /lib/systemd/system/*.service /etc/systemd/system/*.service`	| list the services
 `service --status-all`	| `systemctl list-units`	| list the services
-`chkconfig foobar on` or `update-rc foobar defaults` | systemctl enable foobar.service | enables the service to start on boot
-`chkconfig foobar off` or `update-rc foobar remove` | `systemctl disable foobar.service` | disables the service to start on boot
-`chkconfig foobar` | 	`systemctl is-enabled foobar.service` | check if a service is currently configured to start on boot
+`update-rc foobar defaults` | systemctl enable foobar.service | enables the service to start on boot
+`update-rc foobar remove` | `systemctl disable foobar.service` | disables the service to start on boot
+? | 	`systemctl is-enabled foobar.service` | check if a service is currently configured to start on boot
 ? | `systemctl is-active <service-name>` | check if a service is currently active (running).
 ? | `systemctl show <service-name>` | show all the information about the service.
-`chkconfig foobar –list` | 	`ls /etc/systemd/system/*.wants/foobar.service` |  list what levels this service is configured on or off
 
 ## Working with disk
 
