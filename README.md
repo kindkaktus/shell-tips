@@ -170,12 +170,18 @@ For looking at why a disk is full, `ncdu` saves time over the usual commands lik
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
 
 ### Extending LVM partition
+0. Inventorize your current disk layout: 
+```
+pvs
+vgs
+lvs
+```
 1. Add physical disk space
 2. Add disk partition (fdisk)
 ```
 fdisk /dev/sda
 ```
-3. Povided a new disk has been added, extend volume group with the added partition
+3. Extend volume group with the added partition
 ```
 vgextend ubuntu16-vg /dev/sda3
 ```
