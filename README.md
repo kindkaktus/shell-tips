@@ -175,14 +175,14 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 ```
 fdisk /dev/sda
 ```
-3. Extend volume group with the added partition (vgextend)
+3. Povided a new disk has been adde, extend volume group with the added partition
 ```
 vgextend ubuntu16-vg /dev/sda3
 ```
 4. Extend logical volume with the added partition
 ```
-lvextend /dev/ubuntu16-vg/root /dev/sda3`
-`resize2fs /dev/ubuntu16-vg/root
+lvextend /dev/ubuntu16-vg/root /dev/sda3
+resize2fs /dev/ubuntu16-vg/root
 ```
 
 ## Manage processes
