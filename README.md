@@ -181,6 +181,11 @@ lvs
 ```
 fdisk /dev/sda
 ```
+  - To Create new primary partition (`n` and `p`)
+  - Change the partition type to Linux LVM (`t` and `8e`)
+  - Apply the changes (`w`)
+  - Restart once completed
+
 3. Extend volume group with the added partition
 ```
 vgextend ubuntu16-vg /dev/sda3
