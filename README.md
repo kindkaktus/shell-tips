@@ -175,7 +175,7 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 ```
 fdisk /dev/sda
 ```
-3. Povided a new disk has been adde, extend volume group with the added partition
+3. Povided a new disk has been added, extend volume group with the added partition
 ```
 vgextend ubuntu16-vg /dev/sda3
 ```
