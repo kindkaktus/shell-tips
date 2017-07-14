@@ -221,9 +221,11 @@ resize2fs /dev/ubuntu16-vg/root
 - `/proc/mounts` == `/etc/mtab` – mounts
 - `nohup <command>` - runs the given command with hangup signals ignored, so that the command can continue running in the background after you log out.
 - E.g. you remotely login to the server, then give
-```%ssh <some_server> -l <username>
+```
+%ssh <some_server> -l <username>
 %nohup <some_long_executing_program> &
-%logout```
+%logout
+```
 - `watch`  - execute a program periodically, showing output fuulscreen (i.e. like top). For example: `watch tail –n 25 /tmp/myprog.log` will periodically print last 25 lines of `/tmp/myprog.log`
 - `gdb <program> <pid>` – attach to process pid associating with program executable
 - `gdb <program> <core>` – debug core file core associating with program executable
@@ -234,7 +236,7 @@ resize2fs /dev/ubuntu16-vg/root
 - `gprof` – profiling tool
 
 ## Network
-- For web debugging, `curl` especiallt `curl -I`, `wget`, and the more modern `httpie`
+- For web debugging, `curl` especially `curl -I`, `wget`, and the more modern `httpie`
 - `dstat` = `vmstat` + `iostat` + `ifstat`
 - `netstat -tlnp` - show all TCP listening sockets
 - `netstat –a –p tcp | grep LISTEN` – show all listening TCP sockets (works in OpenBSD)
