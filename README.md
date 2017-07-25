@@ -160,13 +160,9 @@ system V |  systemd equivalent | description
   - `iostat` – brief system disk statistics
 - `du –hs /www` - output the total size of /www folder in a human-readable format
 - `df -h` - file system space usage
-For looking at why a disk is full, `ncdu` saves time over the usual commands like `du -sh *`
-- `disklabel` (BSD) – manipulate disk label
-- `fdisk sd0` or `disklabel sd0` – retrieve disk info including disk geometry. Typical location of USB Flash on OpenBSD is `/dev/sd0i`
+- `ncdu` - very handy disk usage tool; tells you why a disk is full, saves time over the usual commands like `du -sh *`
 - `hdparm -ftT /dev/hda` – retrieve disk speed information
 - `mke2fs -j /dev/<drive-device>` - format with ext3
-- `mkswap /dev/<drive-device>` - format as swap
-- `newfs` (BSD) – format partitions
 - `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
 
