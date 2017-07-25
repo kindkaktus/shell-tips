@@ -101,6 +101,7 @@ Useful grep options:
 - `gcc main.c 2>&1 >file` – stderr to file, stdout to file (note the difference with the above)
 
 ## System administration
+- `last reboot` - information about the last reboot
 - `ipcs -m`  - information about shared memory
 - `ipcs -s`  - information about existing semaphore sets.
 - `sysctl –a`   - kernel configuration info
