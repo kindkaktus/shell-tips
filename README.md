@@ -236,7 +236,6 @@ resize2fs /dev/ubuntu16-vg/root
 - For web debugging, `curl` especially `curl -I`, `wget`, and the more modern `httpie`
 - `dstat` = `vmstat` + `iostat` + `ifstat`
 - `netstat -tlnp` - show all TCP listening sockets
-- `netstat –a –p tcp | grep LISTEN` – show all listening TCP sockets (works in OpenBSD)
 - `netstat –tanp` - show all TCP listening sockets and TCP sockets with established connections
 - `netstat –anp` - show all (TCP and UDP) listening sockets and sockets with established connections
 - `nmap` – network exploration tool and security scanner (e.g. ports scanner)
@@ -691,8 +690,7 @@ for more info:
 
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
-- `ntpd –s` – set time immidiately (OpenBSD)
-- `ntpd -gq` – set time and exit (Linux)
+- `ntpd -gq` – set time and exit
 - `uuidgen` – generated uuid
 - `screen `- screen window manager that multiplexes a physical terminal between several processes. Useful e.g. when having multiple screens per one ssh connection
 - `grabserial` - reads a serial port and writes the data to standard output. Useful e.g. to measure system boot time (`-t` option)
