@@ -493,6 +493,7 @@ done
 - `openssl rsa -in private.key -inform PEM  -out private-rsa.key -outform PEM` - convert PKCS#8 private key (i.e. the one with `BEGIN PRIVATE KEY` header) to PKCS#1 RSA private key (i.e. the one with `BEGIN RSA PRIVATE KEY` header)
 - `openssl pkcs12 -nodes -in file.pfx -out file.pem` – extract all from PKCS#12 package
 - `openssl pkcs12 -export -out certkey.pfx -inkey key.pem -in cert.pem` - create PKCS#12 package
+- `openssl verify -CAfile ca.pem cert.pem` - verify that the given certificate is issued by the given CA
 - `echo –n "some text" | openssl base64 –e` - base64 encode
 - `echo "ABCDEF==" | openssl base64 –d` – base64-decode
 - `echo -n "text" | md5sum` - calculate MD5 digest of the file 
