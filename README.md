@@ -20,6 +20,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - `cd -` -  cd to `$(OLDPWD)`
 - `rm -rf ./* ./.*[!.]* ./...*` - recursively remove all files in the current dir including hidden
 - `ln [–s] target [linkname]` – make [symbolic] links between files/dirs
+- `ln -snf /path/to/target-directory linkname` - CORRECT way to create symlink to directory (NOT `ln -sf` as the latter, when is called for the already existing 'linkname', would create /path/to/target-directory/target-directory link pointing to /path/to/target-directory)
 - `ls –lia` – list files with symlinks and hardlinks (hardlinks are files having the same index)
 - `diff /etc/hosts <(ssh somehost cat /etc/hosts)` –compare local /etc/hosts with a remote one
 
