@@ -523,7 +523,7 @@ git read-tree --prefix=Software/Import/PrettyPython -u pretty-python-remote/mast
 git commit -a -m"Added PrettyPython library as a subtree from https://github.com/kindkaktus/PrettyPython"
 git push
 ```
-... and later on, incorporate new changes made to the 3rd party library into our repo
+... and later on, incorporate upstream changes into our repo
 ```
 git fetch pretty-python-remote
 git pull -s subtree --no-edit pretty-python-remote master
