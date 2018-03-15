@@ -163,6 +163,7 @@ system V |  systemd equivalent | description
 - `df -h` - file system space usage
 - `ncdu` - very handy disk usage tool; tells you why a disk is full, saves time over the usual commands like `du -sh *`
 - `hdparm -ftT /dev/hda` – retrieve disk speed information
+-  `sudo apt-get autoremove --purge -y` free some disk space by removing unused dependencies
 - `mke2fs -j /dev/<drive-device>` - format with ext3
 - `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
