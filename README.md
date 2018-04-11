@@ -180,7 +180,9 @@ lvs
 ```
 fdisk /dev/sda
 ```
-  - To Create new primary partition (`n` and `p`)
+  - Inspect current partition layout (`p`)
+  - Inspect partition range for the newly added disk space (`F`)
+  - Create a new primary partition (`n` and `p`)
   - Change the partition type to Linux LVM (`t` and `8e`)
   - Apply the changes (`w`)
   - Restart once completed
