@@ -187,7 +187,7 @@ fdisk /dev/sda
   - Apply the changes (`w`)
   - Restart once completed
 
-3. Extend volume group with the added partition (imagine the partition you just added is `/dev/sda3`)
+3. Extend volume group with the added partition (imagine the partition you just added is `/dev/sda3` and your LVM volume group reported by `vgs` is `ubuntu16-vg`)
 ```
 vgextend ubuntu16-vg /dev/sda3
 ```
