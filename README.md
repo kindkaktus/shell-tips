@@ -697,6 +697,7 @@ for more info:
 
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
+- `date $(date +%m%d%H%M%Y.%S -d '4 seconds')` - add 4 seconds to the current time
 - `ntpd -gq` – set time and exit
 - `uuidgen` – generated uuid
 - `screen `- screen window manager that multiplexes a physical terminal between several processes. Useful e.g. when having multiple screens per one ssh connection
