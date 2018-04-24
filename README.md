@@ -657,7 +657,7 @@ docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
 ### How to set up a SOCKS proxy server and proxy traffic from browser on Windows and from git client on *nix
 
 #### 1. Setup proxy server
-Just make sure you have ssh daemon up and running. That's the nice thing of SOCKS proxy, once you have sshd running, there is no need for more configuration serve-side.
+Just make sure you have ssh daemon up and running. That's the nice thing of SOCKS proxy, once you have sshd running, there is no need for more configuration server-side.
 #### 2. Setup browser on Windows client machine
 Create ssh session in Putty with hostname and ssh port of your proxy server.
 Under menu Connection -> SSH -> Tunnels add source port (say, 1337), and destination "dynamic".
