@@ -665,7 +665,9 @@ Open this session, enter login credentials and leave the session open
 In your browser (Firefox/Chrome) just specify SOCK5 server localhost and port 1337
 #### 3. Setup git over ssh on *nix client machine
 Setup ssh tunnel to your proxy my-proxy.org:2222
-```ssh -D 1337 -f -C -q -N -p 2222 your-username@my-proxy.org```
+```
+ssh -D 1337 -f -C -q -N -p 2222 your-username@my-proxy.org
+```
 enter username and password when prompted
 ##### When accessing git repo via `ssh` protocol e.g. ssh://git@my-repo.com/my-product.git on Linux
 Add to ~/.ssh/config:
