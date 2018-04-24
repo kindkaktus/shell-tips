@@ -675,7 +675,7 @@ Add to ~/.ssh/config:
 ```
 Host my-repo.com
 User                    git
-ProxyCommand connect-proxy -S localhost:1337 %h 
+ProxyCommand connect-proxy -S localhost:1337 %h 2222
 ```
 alternatively to `connect-proxy` you may use `socat` or `tsocks`.
 ##### When accessing git repo via `http(s)` protocol e.g. `https://my-repo.com/my-product.git`
