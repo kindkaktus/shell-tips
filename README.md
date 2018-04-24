@@ -9,7 +9,7 @@ Partially borrowed from [The art of command line](https://github.com/jlevy/the-a
 - [Network](#network)
 - [Bash](#bash)
 - [Crypto](#crypto)
-- [Git](#git)proxy
+- [Git](#git)
 - [Proxy](#proxy)
 - [Miscellaneous](#miscellaneous)
 
