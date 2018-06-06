@@ -532,7 +532,12 @@ git fetch pretty-python-remote
 git pull -s subtree --no-edit pretty-python-remote master
 git push
 ```
-Sample merge session
+
+List subtrees merged to your project:
+`git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq`
+
+
+### Sample merge session
 ```
 git checkout -B master origin/master
 git merge --no-ff --no-commit origin/feature
@@ -540,9 +545,7 @@ git diff master
 git commit -a
 git push
 ```
-List subtrees merged to your project:
 
-`git log | grep git-subtree-dir | tr -d ' ' | cut -d ":" -f2 | sort | uniq`
 
 ### Housekeeping
 - `git branch -D unneeded-branch` - delete local branch
