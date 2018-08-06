@@ -137,6 +137,14 @@ Useful grep options:
 - For a more in-depth system overview, use `glances`. It presents you with several system level statistics in one terminal window. Very helpful for quickly checking on various subsystems.
 - ``dpkg -S `which program-name` `` - check which package `program-name` comes from
 
+### Housekeeping in Ubuntu (reclaiming disk space)
+```
+sudo apt-get clean autoclean
+sudo apt-get autoremove --purge -y
+sudo find /var/tmp/mkinitramfs* -mtime +7 -exec rm -rf {} \;
+sudo /usr/bin/purge-old-kernels --keep 3 -y
+```
+
 
 ## Systemd and System V (init.d) equivalents
 
