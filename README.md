@@ -271,6 +271,7 @@ resize2fs /dev/ubuntu16-vg/root
   - The `ab` tool (comes with Apache) is helpful for quick-and-dirty checking of web server performance. For more complex load testing, try `siege`.
   - For more serious network debugging, `wireshark`, `tshark`, or `ngrep`.
 - `minicom` – serial port console client
+- `dig +short myip.opendns.com @resolver1.opendns.com` - resolve your external IP
 
 
 ## Bash 
