@@ -525,6 +525,17 @@ openssl crl2pkcs7 -nocrl -certfile cert.pem -out cert.p7b -certfile signingcacer
 ```
 ## Git
 
+### Rebase accepting my changes for conflicts
+```
+git checkout --ours /path/to/conflict/file
+git add /path/to/conflict/file
+git rebase --continue
+```
+#### or even before you hit any conflicts (yes, it is -Xtheirs which might be counterintuitive)
+```
+git rebase -Xtheirs origin/master
+```
+
 ### Manage git subtrees
 
 Add repository as git subtree
