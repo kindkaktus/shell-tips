@@ -317,8 +317,8 @@ if [[ $foo =~ $re ]]
 ``` 
 
 ### Checking numbers:
-- `[ "$n1" -eq "$n2" ]` -  Check to see if n1 equals n2
-- `[ "$n1" -ne "$n2" ]` -  Check to see if n1 is not equal to n2.
+- `[ "$n1" -eq "$n2" ]` or `((n1 == n2))`-  Check to see if n1 equals n2
+- `[ "$n1" -ne "$n2" ]` or `((n1 != n2))` -  Check to see if n1 is not equal to n2.
 - `[ "$n1" -lt "$n2" ]` or `((n1 < n2))` - Check to see if n1 < n2.
 - `[ "$n1" -le "$n2" ]` or `((n1 <= n2))` - Check to see if n1 <= n2.
 - `[ "$n1" -gt "$n2" ]` or `((n1 > n2))` - Check to see if n1 > n2.
