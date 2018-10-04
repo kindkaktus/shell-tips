@@ -355,10 +355,11 @@ echo "$v" # will print *.sh
 - `if [ $my_error_flag -eq 1 ] ||  [ $my_error_flag_o -eq 2 ] || ([ $my_error_flag -eq 1 ] && [ $my_error_flag_o -eq 2 ]); then`
 - `if [ -f /var/run/reboot-required -o -f /var/run/reboot-required.pkgs ]; then`
 
-#### Using more modern double-bracket syntax
+#### Using modern double-bracket syntax
 - `if [[ $num -eq 3 && "$stringvar" == "foo" ]]; then`
 - `if [[ $num -eq 3 -a "$stringvar" == "foo" ]]; then`
 - `if [[ -f /var/run/reboot-required || -f /var/run/reboot-required.pkgs ]]; then`
+- `if (((A == 0 || B != 0) && C == 0)); then` - for arithmetic expressions
 
 ### Arithmetic expansion
 `i=$(( (i + 1) % 5 ))`
