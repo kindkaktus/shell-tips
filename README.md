@@ -132,8 +132,8 @@ Useful grep options:
 - `write user [tty]` – send text message to a logged user on the same machine
 - `passwd` – change password
 - `adduser <username>` - add new user (preferred to useradd)
-- `adduser <username> sudo` – add existing user to sudo group (Debian/Ubuntu). The change will take effect the next time the user logs in
-- `usermod -aG wheel <username>` – add existing user to sudo group (CentOS/RHEL). The change will take effect the next time the user logs in
+- `adduser <username> sudo` – add existing user to sudo group on Debian/Ubuntu. The change will take effect the next time the user logs in
+- `usermod -aG wheel <username>` followed by `visudo` and uncommenting `%wheel  ALL=(ALL) ALL` line – add existing user to sudo group on CentOS/RHEL. The change will take effect the next time the user logs in
 - `for s in /etc/rc$(runlevel  | awk '{ print $2}').d/*; do  basename $s | grep '^S' | sed 's/S[0-9].//g' ;done | sort` – list services started on boot on Debian. As an alternative install `sysv-rc-conf` package. On CentOS use `chkconfig`
 - For a more in-depth system overview, use `glances`. It presents you with several system level statistics in one terminal window. Very helpful for quickly checking on various subsystems.
 - ``dpkg -S `which program-name` `` - check which package `program-name` comes from
