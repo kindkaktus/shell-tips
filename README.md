@@ -631,6 +631,9 @@ Combine two last commits into one
 
 `git reset --soft "HEAD^ && git commit --amend --no-edit`
 
+Set commit date
+`git commit --date "13 Sep 2018 21:03 CET"`
+
 Oh shit, I accidentally committed something to master that should have been on a brand new branch!
 ```
 # create a new branch from the current state of master
