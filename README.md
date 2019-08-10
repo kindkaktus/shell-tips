@@ -720,6 +720,7 @@ for more info:
 
 ## Miscellaneous
 - `date MMDDhhmmYYYY`  - set date
+- `date -u +%s` - get UTC as Unix timestamp
 - `date $(date +%m%d%H%M%Y.%S -d '4 seconds')` - add 4 seconds to the current time
 - `ntpd -gq` – set time and exit
 - `uuidgen` – generated uuid
