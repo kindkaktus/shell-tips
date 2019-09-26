@@ -236,7 +236,7 @@ resize2fs /dev/ubuntu16-vg/root
 %nohup <some_long_executing_program> &
 %logout
 ```
-- `watch`  - execute a program periodically, showing output fuulscreen (i.e. like top). For example: `watch tail –n 25 /tmp/myprog.log` will periodically print last 25 lines of `/tmp/myprog.log`
+- `watch`  - execute a program periodically with fullscreen output. For example: `watch tail –n 25 /tmp/myprog.log` will periodically print last 25 lines of `/tmp/myprog.log`
 - `gdb <program> <pid>` – attach to process pid associating with program executable
 - `gdb <program> <core>` – debug core file core associating with program executable
 - `time <command>` – executes command and displays its resource usage after it finishes
