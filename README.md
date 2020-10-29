@@ -174,14 +174,15 @@ system V |  systemd equivalent | description
 - `hdparm -ftT /dev/hda` – retrieve disk speed information
 -  `sudo apt-get autoremove --purge -y` free some disk space by removing unused dependencies
 - `mke2fs -j /dev/<drive-device>` - format with ext3
+- `mkfs -t ext4 /dev/<drive-device>` - format with ext4
 - `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
 
 ### Extending non-LVM partition (adding new disk)
 1. Add physical disk space
-2. Add disk partition (fdisk)
+2. Add disk partition (fdisk or parted)
 ```
-fdisk /dev/sdb
+  sudo fdisk /dev/sdb
 ```
   - Inspect current partition layout (`p`)
   - Inspect partition range for the newly added disk space (`F`)
@@ -195,8 +196,8 @@ fdisk /dev/sdb
 4. Should the reason for adding a new disk is a lack of space on disk and you feel like moving the contents of the entire directory to the new added disk, you should do it in  steps: mount the new partition under a temporary location, copy your to this partition and finally remount the partition with the original directory path.
 For example you notices that you disk is full because /var/lib/docker takes too much space, so you feel like moving this to a new disk. You do it in steps:
     1. stop docker
-    2. mount the new added disk as /usr/lib/docker-new
-    3. move the contents of /usr/lib/docker to /usr/lib/docker-new/
+    2. move the contents of /usr/lib/docker to /usr/lib/docker-new/
+    3. mount the new added disk as /usr/lib/docker-new
     4. remount the new disk as /usr/lib/docker  (probably reboot afterwards)
     5. remove /usr/lib/docker-new and start docker
 
