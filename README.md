@@ -194,11 +194,11 @@ fdisk /dev/sdb
   
 4. Should the reason for adding a new disk is a lack of space on disk and you feel like moving the contents of the entire directory to the new added disk, you should do it in  steps: mount the new partition under a temporary location, copy your to this partition and finally remount the partition with the original directory path.
 For example you notices that you disk is full because /var/lib/docker takes too much space, so you feel like moving this to a new disk. You do it in steps:
-Step 1: stop docker
-Step 2: mount the new added disk as /usr/lib/docker-new
-Step 3: move the contents of /usr/lib/docker to /usr/lib/docker-new/
-Step 4: remount the new disk as /usr/lib/docker  (probably reboot afterwards)
-Step 5: remove /usr/lib/docker-new and start docker
+    1. stop docker
+    2. mount the new added disk as /usr/lib/docker-new
+    3. move the contents of /usr/lib/docker to /usr/lib/docker-new/
+    4. remount the new disk as /usr/lib/docker  (probably reboot afterwards)
+    5. remove /usr/lib/docker-new and start docker
 
 ### Extending LVM partition
 0. Inventorize your current disk layout: 
