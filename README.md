@@ -177,6 +177,29 @@ system V |  systemd equivalent | description
 - `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
 
+### Extending non-LVM partition (adding new disk)
+1. Add physical disk space
+2. Add disk partition (fdisk)
+```
+fdisk /dev/sdb
+```
+  - Inspect current partition layout (`p`)
+  - Inspect partition range for the newly added disk space (`F`)
+  - Create a new primary partition (`n` and `p`)
+  - Apply the changes (`w`)
+3. Format disk partition 
+```
+  sudo mkfs -t ext4 /dev/sdb1
+```
+  
+4. Should the reason for adding a new disk is a lack of space on disk and you feel like moving the contents of the entire directory to the new added disk, you should do it in  steps: mount the new partition under a temporary location, copy your to this partition and finally remount the partition with the original directory path.
+For example you notices that you disk is full because /var/lib/docker takes too much space, so you feel like moving this to a new disk. You do it in steps:
+Step 1: stop docker
+Step 2: mount the new added disk as /usr/lib/docker-new
+Step 3: move the contents of /usr/lib/docker to /usr/lib/docker-new/
+Step 4: remount the new disk as /usr/lib/docker  (probably reboot afterwards)
+Step 5: remove /usr/lib/docker-new and start docker
+
 ### Extending LVM partition
 0. Inventorize your current disk layout: 
 ```
