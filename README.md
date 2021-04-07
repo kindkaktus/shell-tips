@@ -238,7 +238,7 @@ resize2fs /dev/ubuntu16-vg/root
 - `dstat` = `vmstat` + `iostat` + `ifstat`
 - `htop` - similar to `top`, but is better (i.e. shows correct CPU timings for multithreaded programs which uses NPL threads; also more user-friendly etc)
 - `ps aux` – obtain process list
-  - `ps auxw` – with wide output (matters when the line does not fit the window width)
+  - `ps auxww` – with wide output (matters when the line does not fit the window width)
   - `ps auxf` – with tree
 - `ps –eLf` – info about threads
   - `ps -eLo pid,ppid,lwp,%cpu,%mem,vsize,rssize` – info per thread with CPU/memory usage
