@@ -142,8 +142,7 @@ Useful grep options:
 ```
 sudo apt-get clean autoclean
 sudo apt-get autoremove --purge -y
-sudo find /var/tmp/mkinitramfs* -mtime +7 -exec rm -rf {} \;
-sudo /usr/bin/purge-old-kernels --keep 3 -y
+sudo /usr/bin/purge-old-kernels -y
 ```
 
 
