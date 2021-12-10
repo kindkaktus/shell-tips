@@ -707,7 +707,12 @@ Cleanup all stopped containers and untagged images
 docker rm $(docker ps -a -q)
 docker rmi $(docker images | grep "^<none>" | awk '{print $3}')
 ```
-
+  
+Remove all unused containers, networks, images (both dangling and unreferenced), and volumes.
+ ```
+  docker system prune -a -f
+```
+  
 ## Proxy
 ### How to set up a SOCKS proxy server and proxy traffic from browser on Windows and from git client on *nix
 
