@@ -72,7 +72,7 @@ Useful grep options:
 - To convert HTML to text: `lynx -dump -stdin`
 - For Markdown, HTML, and all kinds of document conversion, try `pandoc`.
 - If you must handle XML, `xmlstarlet` is old but good.
-- For JSON, use `jq`.
+- For JSON, use `jq` or pipe to 'python -m json.tool'.
 - For Excel or CSV files, `csvkit` provides `in2csv`, `csvcut`, `csvjoin`, `csvgrep`, etc.
 - For Amazon S3, `s3cmd` is convenient and `s4cmd` is faster. Amazon's aws is essential for other AWS-related tasks.
 - f you ever need to write a tab literal in a command line in Bash (e.g. for the -t argument to sort), press `ctrl-v [Tab]` or write `$'\t'` (the latter is better as you can copy/paste it).
