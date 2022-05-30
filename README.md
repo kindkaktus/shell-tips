@@ -146,11 +146,8 @@ sudo /usr/bin/purge-old-kernels -y
 ```
 
 ### Housekeeping in Windows 
-Remove all files and foldert from %tmp% older than 30 days
-Run powershell as an admin
-```
-Get-ChildItem -Path "$env:TEMP" -Directory -recurse |where {$_.LastWriteTime -le $(get-date).Adddays(-30)} | Remove-Item -recurse -force
-```
+- `Get-ChildItem -Path "$env:TEMP" -Directory -recurse |where {$_.LastWriteTime -le $(get-date).Adddays(-30)} | Remove-Item -recurse -force
+` - remove all files and foldert from %tmp% older than 30 days (run powershell as an admin)
 
 
 ## Systemd and System V (init.d) equivalents
