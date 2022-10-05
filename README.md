@@ -556,6 +556,11 @@ openssl x509 -req -in certreq.p10 -sha256 -extfile openssl.cnf -extensions usr_c
 # produce also PKCS#7 cert
 openssl crl2pkcs7 -nocrl -certfile cert.pem -out cert.p7b -certfile signingcacertkey.pem
 ```
+
+### Recover CSR from the certificate
+```bash
+openssl x509 -x509toreq -in cert.pem -signkey key.pem -text |  sed -ne '/-BEGIN CERTIFICATE REQUEST-/,/-END CERTIFICATE REQUEST-/p' > recovered.csr
+```
 ## Git
 
 ### Rebase accepting my changes for conflicts
