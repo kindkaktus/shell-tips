@@ -199,14 +199,14 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 4. Should the reason for adding a new disk is a lack of space on disk and you feel like moving the contents of the entire directory to the new added disk, you should do it in  steps: mount the new partition under a temporary location, copy your to this partition and finally remount the partition with the original directory path.
 For example you notices that you disk is full because /var/lib/docker takes too much space, so you feel like moving this to a new disk. You do it in steps:
     1. stop docker
-    2. move to contents of /usr/lib/docker somethere e.g. to /usr/lib/docker-bak
-    3. mount the new added disk as /usr/lib/docker by adding to /etc/fstab
+    2. move to contents of /var/lib/docker somethere e.g. to /var/lib/docker-bak
+    3. mount the new added disk as /var/lib/docker by adding to /etc/fstab
     ```
     /dev/sdb1 /var/lib/docker ext4 defaults 1 1
     ```
     4. reboot
     5. stop docker
-    6. move  the backed up data back to the /usr/lib/docker and discard the backup
+    6. move  the backed up data back to the /var/lib/docker and discard the backup
 
 ### Extending LVM partition
 0. Inventorize your current disk layout: 
