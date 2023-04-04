@@ -820,5 +820,16 @@ Edit `/etc/vsftpd/vsftpd.conf`:
 ### See package changelog
 - `apt-get changelog <package>` - for Debian/Ubuntu
 - `rpm -q --changelog <package> | head` - for CentOS
+
+### Clean reinstall corrupted MySQL
+`apt-get --purge -y remove mysql-server mysql-common mysql-client`
+`apt-get autoremove`
+`rm -rf /etc/mysql /var/lib/mysql*`
+`apt-get install -f mysql-server`
+`systemctl start mysql`
+`systemctl status mysql`
+`apt-get install -f mysql-client`
+... possibly reinstall MySQL development bindings e.g.
+`apt install -y libmysql++-dev`
  
 
