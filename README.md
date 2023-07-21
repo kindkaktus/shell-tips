@@ -574,6 +574,11 @@ git rebase --continue
 git rebase -Xtheirs origin/master
 ```
 
+#### in contrast, rebase accepting the changes of the master branch for conflicts
+```
+git rebase -Xours origin/master
+```
+
 ### Manage git subtrees
 
 Add repository as git subtree
