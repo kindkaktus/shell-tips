@@ -138,11 +138,17 @@ Useful grep options:
 - For a more in-depth system overview, use `glances`. It presents you with several system level statistics in one terminal window. Very helpful for quickly checking on various subsystems.
 - ``dpkg -S `which program-name` `` - check which package `program-name` comes from
 
-### Housekeeping in Ubuntu (reclaiming disk space)
+### Housekeeping in Debian/Ubuntu (reclaiming disk space)
 ```
 sudo apt-get clean autoclean
 sudo apt-get autoremove --purge -y
 sudo /usr/bin/purge-old-kernels -y
+
+sudo docker image prune -f
+sudo docker system prune -a -f
+
+sudo apt install -y ncdu
+sudo ncdu /
 ```
 
 ### Housekeeping in Windows 
