@@ -146,9 +146,6 @@ sudo /usr/bin/purge-old-kernels -y
 
 sudo journalctl --vacuum-time=2d
 
-sudo docker image prune -f
-sudo docker system prune -a -f
-
 sudo apt install -y ncdu
 sudo ncdu /
 ```
