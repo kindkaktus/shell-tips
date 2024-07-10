@@ -184,6 +184,7 @@ system V |  systemd equivalent | description
 - `mke2fs -j /dev/<drive-device>` - format with ext3
 - `mkfs -t ext4 /dev/<drive-device>` - format with ext4
 - `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword.
+  
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
 
 ### Extending non-LVM partition (adding new disk)
@@ -202,10 +203,11 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 ```
 
 4. Mount the disk partition
-   ```
-  mkdir -p /path/to/new/disk
+```
+  sudo mkdir -p /path/to/new/disk
   sudo mount -t ext4 /dev/sdb1 /path/to/new/disk
-  ```
+```
+
 In order to make your changes persistent it is strongly suggested to check /etc/mtab for the correct configuration line to be appended to /etc/fstab.
 This is to avoid mistyping /etc/fstab which will make the system non-bootable.
 
