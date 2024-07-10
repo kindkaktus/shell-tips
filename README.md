@@ -200,8 +200,18 @@ In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab whic
 ```
   sudo mkfs -t ext4 /dev/sdb1
 ```
+
+4. Mount the disk partition
+   ```
+  mkdir -p /path/to/new/disk
+  sudo mount -t ext4 /dev/sdb1 /path/to/new/disk
+  ```
+In order to make your changes persistent it is strongly suggested to check /etc/mtab for the correct configuration line to be appended to /etc/fstab.
+This is to avoid mistyping /etc/fstab which will make the system non-bootable.
+
   
-4. Should the reason for adding a new disk is a lack of space on disk and you feel like moving the contents of the entire directory to the new added disk, you should do it in  steps: mount the new partition under a temporary location, copy your to this partition and finally remount the partition with the original directory path.
+  
+5. Should the reason for adding a new disk is a lack of space on disk and you feel like moving the contents of the entire directory to the new added disk, you should do it in  steps: mount the new partition under a temporary location, copy your to this partition and finally remount the partition with the original directory path.
 For example you notices that you disk is full because /var/lib/docker takes too much space, so you feel like moving this to a new disk. You do it in steps:
     1. stop docker
     2. move to contents of /var/lib/docker somethere e.g. to /var/lib/docker-bak
