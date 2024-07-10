@@ -183,7 +183,7 @@ system V |  systemd equivalent | description
 -  `sudo apt-get autoremove --purge -y` free some disk space by removing unused dependencies
 - `mke2fs -j /dev/<drive-device>` - format with ext3
 - `mkfs -t ext4 /dev/<drive-device>` - format with ext4
-- `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword
+- `mount –a`  - process `/etc/fstab`, however skipping lines with `‘noauto’` keyword.
 In order to add new currently mounted points to `/etc/fstab`, use /etc/mtab which contains list of currently mounted devices in `fstab` format
 
 ### Extending non-LVM partition (adding new disk)
