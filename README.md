@@ -305,7 +305,7 @@ resize2fs /dev/ubuntu16-vg/root
 - `rpcinfo` – reports rpc information of the (remote) host
 - `netcat $ip $port < /dev/zero` – send stream of zeroes to the server (might be useful for testing)
 - `echo "hello from server" | netcat -l -p 443` - simple server, can be checked with telnet
-- `python -m SimpleHTTPServer 80` - simple webserver for testing
+- `python -m http.server 80` - simple webserver for testing
 - `lsof -i TCP:1234` – who is listeinng port 1234.
 - `fuser` – identify processes using files and sockets
 - `host [pcname]` – DNS lookup (of pcname).
