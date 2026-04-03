@@ -121,6 +121,7 @@ Useful grep options:
 - `ldd <binary>` – print shared library dependencies
 - `ldconfig, ld.so` – configure the location of dynamic libs
 - `nm`, `objdump`, `ldd`, `readelf` - inspecting binaries (export/import symbols, dependant libraries etc)
+- eg. find libs exporting the specific symbol: find /lib/x86_64-linux-gnu/  -name "lib*crypto*.so" -exec bash -c "nm -DC --defined-only {} 2>/dev/null | grep EVP_PKEY_Q_keygen && echo {}" \;
 - `export LD_DEBUG=symbols; ./myapp` – run myapp displaying shared libs symbols resolution progress
 - `id`  - show current user access rights
 - `whoami` - your login name
