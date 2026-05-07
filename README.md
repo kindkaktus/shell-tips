@@ -840,9 +840,8 @@ Edit `/etc/vsftpd/vsftpd.conf`:
 `tail -10000 /var/log/apache2/access.log | awk '{print $12}' | sort | uniq -c | sort -n | tail`
 
 
-### See package changelog
-- `apt-get changelog <package>` - for Debian/Ubuntu
-- `rpm -q --changelog <package> | head` - for CentOS
+### See package information
+- `apt-cache policy <package>`
 
 ### Clean reinstall corrupted MySQL
 `apt-get --purge -y remove mysql-server mysql-common mysql-client`
