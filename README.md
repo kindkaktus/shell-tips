@@ -101,6 +101,14 @@ Useful grep options:
 - `gcc main.c >file 2>&1` - stdout and stderr to file (ksh and bash)
 - `gcc main.c 2>&1 >file` – stderr to file, stdout to file (note the difference with the above)
 
+### Replacing literal '\\n' with endline in text file
+- python3 -c 'import sys; sys.stdout.buffer.write(sys.stdin.buffer.read().replace(b"\\n", b"\n"))' \
+    < input.txt > output.txt - replacing literal '\\n' with endlines
+- perl -0777 -pe 's/\\n/\n/g' input.txt > output.txt - replacing literal '\\n' with endlines
+- perl -0777 -pe 's/\\r\\n/\n/g; s/\\n/\n/g' input.txt > output.txt - replacing Windows endlines with Linux endlines
+*NOTICE: never use the same input and output file in in constructions like ./some-app < file.log > file.log
+because output file will be created before ./some-app gets invoked leavig you with empty file as a result*
+
 ## System administration
 - `last reboot` - information about the last reboot
 - `ipcs -m`  - information about shared memory
