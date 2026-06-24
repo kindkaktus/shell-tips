@@ -590,20 +590,25 @@ openssl x509 -x509toreq -in cert.pem -signkey key.pem -text |  sed -ne '/-BEGIN 
 ```
 ## Git
 
-### Rebase accepting my changes for conflicts
+### Rebase accepting MY feature branch changes for conflicts
 ```
-git checkout --ours /path/to/conflict/file
+git rebase origin/master
+...
+CONFLICT (content): Merge conflict in /path/to/conflict/file
+...
+git restore --theirs /path/to/conflict/file
 git add /path/to/conflict/file
 git rebase --continue
 ```
-#### or even before you hit any conflicts (yes, it is -Xtheirs which might be counterintuitive)
-```
-git rebase -Xtheirs origin/master
-```
 
-#### in contrast, rebase accepting the changes of the master branch for conflicts
+### Rebase accepting master's changes for conflicts
 ```
-git rebase -Xours origin/master
+git restore --ours /path/to/conflict/file
+...
+CONFLICT (content): Merge conflict in /path/to/conflict/file
+...
+git add /path/to/conflict/file
+git rebase --continue
 ```
 
 ### Manage git subtrees
