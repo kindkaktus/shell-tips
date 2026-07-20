@@ -251,18 +251,18 @@ fdisk /dev/sda
   - Inspect current partition layout (`p`)
   - Inspect partition range for the newly added disk space (`F`)
   - Create a new primary partition (`n` and `p`)
-  - Change the partition type to Linux LVM (`t` and `8e`)
+  - [is it necessary?] Change the partition type to Linux LVM (`t` and `8e`)
   - Apply the changes (`w`)
   - Restart once completed
 
-4. Extend volume group with the added partition (imagine the partition you just added is `/dev/sda3` and your LVM volume group reported by `vgs` is `ubuntu16-vg`)
+4. Extend volume group with the added partition (imagine the partition you just added is `/dev/sda3` and your LVM volume group reported by `vgs` is `ubuntu-vg`)
 ```
-vgextend ubuntu16-vg /dev/sda3
+vgextend ubuntu-vg /dev/sda3
 ```
 5. Extend logical volume with the added partition
 ```
-lvextend /dev/ubuntu16-vg/root /dev/sda3
-resize2fs /dev/ubuntu16-vg/root
+lvextend /dev/ubuntu-vg/root /dev/sda3
+resize2fs /dev/ubuntu-vg/root
 ```
 
 ## Manage processes
