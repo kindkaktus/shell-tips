@@ -243,7 +243,8 @@ vgs
 lvs
 ```
 1. Add physical disk space
-2. Add disk partition (fdisk)
+2. Add disk partition (fdisk).
+3. Reboot (might not be necessary)
 ```
 fdisk /dev/sda
 ```
@@ -254,11 +255,11 @@ fdisk /dev/sda
   - Apply the changes (`w`)
   - Restart once completed
 
-3. Extend volume group with the added partition (imagine the partition you just added is `/dev/sda3` and your LVM volume group reported by `vgs` is `ubuntu16-vg`)
+4. Extend volume group with the added partition (imagine the partition you just added is `/dev/sda3` and your LVM volume group reported by `vgs` is `ubuntu16-vg`)
 ```
 vgextend ubuntu16-vg /dev/sda3
 ```
-4. Extend logical volume with the added partition
+5. Extend logical volume with the added partition
 ```
 lvextend /dev/ubuntu16-vg/root /dev/sda3
 resize2fs /dev/ubuntu16-vg/root
